@@ -1,20 +1,14 @@
 {
-  "name": "محرك بحث آمن (Ahmia Clone)",
-  "short_name": "AhmiaSearch",
-  "start_url": "./index.html",
+  "name": "CyberSecurity Assistant",
+  "short_name": "CyberAI",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#4CAF50",
-  "description": "محرك بحث مخصص للروابط المخفية يعتمد على قاعدة بيانات محلية",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192.png?text=Ahmia",
+      "src": "https://via.placeholder.com/192.png?text=AI",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://via.placeholder.com/512.png?text=Ahmia",
-      "sizes": "512x512",
       "type": "image/png"
     }
   ]
