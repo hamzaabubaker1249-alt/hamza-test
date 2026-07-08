@@ -3,38 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محرك بحث آمن</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CyberSecurity Hub</title>
     <link rel="manifest" href="manifest.json">
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; padding: 20px; }
+        .modal { position: fixed; top: 20%; left: 30%; width: 40%; background: #1e1e1e; padding: 20px; border: 1px solid #4CAF50; border-radius: 10px; z-index: 1000; }
+        #chatArea { height: 200px; overflow-y: scroll; border: 1px solid #333; margin: 10px 0; padding: 10px; }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">Ahmia Clone</div>
-        <!-- زر التثبيت مخفي افتراضياً ويظهر فقط إذا كان المتصفح يدعم PWA -->
-        <button id="installBtn" style="display: none;">تثبيت التطبيق</button>
+        <button id="aiHelperBtn" style="padding: 10px; background: #4CAF50;">مساعد ذكي (AI)</button>
+        <button id="installBtn" style="padding: 10px;">تثبيت التطبيق</button>
     </header>
 
-    <main>
-        <div class="search-container">
-            <h1>ابحث في الروابط المخفية بشكل آمن</h1>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="اكتب كلمة البحث هنا (مثال: حيوانات، متاجر، لينكس)...">
-                <button id="searchBtn">بحث</button>
-            </div>
-        </div>
-
-        <div id="resultsContainer" class="results">
-            <!-- ستظهر النتائج هنا -->
-        </div>
-    </main>
+    <div id="aiModal" class="modal" style="display:none;">
+        <h3>المساعد السيبراني</h3>
+        <div id="chatArea"></div>
+        <p id="limitMessage" style="display:none; color: red;">لقد وصلت للحد الأقصى. تواصل معنا: hamzaabubaker1249@gmail.com</p>
+        <input type="text" id="userInput" placeholder="اكتب سؤالك...">
+        <button onclick="askAI()">إرسال</button>
+        <button onclick="document.getElementById('aiModal').style.display='none'">إغلاق</button>
+    </div>
 
     <script src="app.js"></script>
     <script>
-        // تسجيل Service Worker لعمل التطبيق
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('Service Worker Registered'));
-        }
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
     </script>
 </body>
 </html>
