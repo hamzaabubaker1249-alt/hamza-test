@@ -6,35 +6,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const addressBar = document.getElementById("address-bar");
   const viewport = document.getElementById("web-viewport");
 
-  // --- 1. Disclaimer Modal Acceptance ---
-  acceptBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
+  // --- 1. قبول إخلاء المسؤولية ---
+  if (acceptBtn) {
+    acceptBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
 
-  // --- 2. Address Bar Navigation ---
-  navForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let url = addressBar.value.trim();
+  // --- 2. معالجة البحث والتحويل بشكل صحيح ---
+  if (navForm) {
+    navForm.addEventListener("submit", (e) => {
+      e.preventDefault(); // منع إعادة تحميل الصفحة
+      e.stopPropagation();
 
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      url = "https://" + url;
-      addressBar.value = url;
-    }
+      let input = addressBar.value.trim();
+      if (!input) return;
 
-    viewport.src = url;
-  });
+      // إضافة https:// تلقائياً إذا لم تكن موجودة
+      let targetUrl = input;
+      if (!/^https?:\/\//i.test(input)) {
+        targetUrl = "https://" + input;
+      }
 
-  // --- 3. Ephemeral Session Cleanup Handler ---
+      addressBar.value = targetUrl;
+
+      // لاستعراض المواقع التي تمنع الـ iframe (مثل Google) نستخدم بروكسي خفيف للعرض
+      // إذا كان الرابط هو جوجل أو يوتيوب أو فيسبوك، نمرره عبر الخدمة لفتح الحظر:
+      if (targetUrl.includes("google.com") || targetUrl.includes("facebook.com") || targetUrl.includes("x.com")) {
+        viewport.src = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetUrl);
+      } else {
+        viewport.src = targetUrl;
+      }
+    });
+  }
+
+  // --- 3. مسح الجلسة وتفريغ البيانات ---
   function purgeSession() {
-    // Clear Web Storage
     try {
       localStorage.clear();
       sessionStorage.clear();
     } catch (e) {
-      console.error("Storage clear failed:", e);
+      console.error("خطأ أثناء مسح الذاكرة:", e);
     }
 
-    // Clear Document Cookies
+    // مسح الكوكيز
     const cookies = document.cookie.split(";");
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i];
@@ -43,23 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
     }
 
-    // Reset iframe viewport
-    if (viewport) {
-      viewport.src = "about:blank";
-    }
-    
-    if (addressBar) {
-      addressBar.value = "";
-    }
+    // إعادة ضبط الشاشة والشريط
+    if (viewport) viewport.src = "about:blank";
+    if (addressBar) addressBar.value = "";
   }
 
-  // Manual Trigger: "Wipe Session" Button
-  wipeBtn.addEventListener("click", () => {
-    purgeSession();
-    alert("Session data, storage, and cookies have been wiped.");
-  });
+  // زر مسح الجلسة اليدوي
+  if (wipeBtn) {
+    wipeBtn.addEventListener("click", () => {
+      purgeSession();
+      alert("تم مسح جميع بيانات الجلسة بنجاح!");
+    });
+  }
 
-  // Automatic Lifecycle Triggers: Clear storage on close / unload
+  // التنظيف التلقائي عند إغلاق أو تحديث التطبيق
   window.addEventListener("beforeunload", purgeSession);
   window.addEventListener("pagehide", purgeSession);
 });
