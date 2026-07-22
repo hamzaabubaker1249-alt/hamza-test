@@ -1,60 +1,67 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر حمزة</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ephemeral Viewer</title>
+
+  <!-- iOS / Apple PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ephemeral">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <!-- Manifest Link -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>متجر حمزة الإلكتروني</h1>
-        <div id="cart-info">السلة: <span id="cart-count">0</span> منتجات</div>
+  <!-- Legal Disclaimer Modal -->
+  <div id="disclaimer-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Legal Disclaimer & Terms</h2>
+      <p>
+        This application is a <strong>zero-log, ephemeral temporary viewer</strong>. 
+        It does not permanently store browsing history, logs, or user identifiers.
+      </p>
+      <p>
+        By proceeding, you acknowledge that all browsing session data will be destroyed upon closing or refreshing the application, and you hold <strong>sole legal responsibility</strong> for all browsing activities and content accessed through this interface.
+      </p>
+      <button id="accept-btn" class="btn btn-primary">I Accept & Assume Full Responsibility</button>
+    </div>
+  </div>
+
+  <!-- Main Application UI -->
+  <div class="app-container">
+    
+    <!-- Navigation / Header Bar -->
+    <header class="app-header">
+      <form id="nav-form" class="nav-form">
+        <input 
+          type="url" 
+          id="address-bar" 
+          placeholder="Enter URL (e.g., https://example.com)..." 
+          required 
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+        <button type="submit" class="btn btn-nav">Go</button>
+      </form>
+      <button id="wipe-btn" class="btn btn-danger">Wipe Session</button>
     </header>
 
-    <!-- قسم المنتجات -->
-    <section class="products-container" id="products-list">
-        <!-- لإضافة منتج جديد، انسخ هذا المربع وغير البيانات -->
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="صورة المنتج">
-            <h3>اسم المنتج الأول</h3>
-            <p>150 د.ل</p>
-            <button onclick="addToCart('اسم المنتج الأول', 150)">إضافة للسلة</button>
-        </div>
+    <!-- Embedded Web Viewport -->
+    <main class="viewport-container">
+      <iframe id="web-viewport" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+    </main>
 
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="صورة المنتج">
-            <h3>اسم المنتج الثاني</h3>
-            <p>200 د.ل</p>
-            <button onclick="addToCart('اسم المنتج الثاني', 200)">إضافة للسلة</button>
-        </div>
-    </section>
+  </div>
 
-    <!-- قسم إتمام الطلب (الدفع) -->
-    <section class="checkout-section">
-        <h2>إتمام الطلب</h2>
-        <p>الإجمالي: <span id="total-price">0</span> د.ل</p>
-        
-        <!-- نموذج إرسال الطلب إلى إيميلك -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="text" name="اسم_العميل" placeholder="الاسم الكامل" required>
-            <input type="email" name="إيميل_العميل" placeholder="البريد الإلكتروني" required>
-            <input type="text" name="العنوان" placeholder="عنوان التوصيل" required>
-            
-            <!-- حقل مخفي يحتوي على تفاصيل الطلب -->
-            <input type="hidden" name="تفاصيل_الطلب" id="order-details" value="">
-            
-            <h3>اختر طريقة الدفع:</h3>
-            <select name="طريقة_الدفع" required>
-                <option value="بطاقة_مصرفية">بطاقة مصرفية (فيزا/ماستركارد)</option>
-                <option value="الدفع_عند_الاستلام">الدفع عند الاستلام</option>
-            </select>
-
-            <button type="submit">تأكيد الطلب والدفع</button>
-        </form>
-    </section>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
