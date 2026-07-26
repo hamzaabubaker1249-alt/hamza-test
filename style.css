@@ -1,201 +1,95 @@
-:root {
-  --bg: #0f172a;
-  --bg2: #111827;
-  --card: rgba(255,255,255,0.08);
-  --text: #e5e7eb;
-  --muted: #cbd5e1;
-  --primary: #7c3aed;
-  --primary2: #22c55e;
-  --border: rgba(255,255,255,0.12);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, var(--bg), var(--bg2));
-  color: var(--text);
   min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 50%, #7c3aed 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  padding: 20px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.container {
+  width: 100%;
+  max-width: 750px;
 }
 
-.hero {
-  padding: 24px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-}
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.links {
-  display: flex;
-  gap: 18px;
-}
-
-.links a {
-  opacity: 0.9;
-  transition: 0.3s;
-}
-
-.links a:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: auto;
+.card {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  padding: 40px;
   text-align: center;
-  animation: fadeUp 1s ease both;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeUp 0.8s ease;
 }
 
-.badge {
+.tag {
   display: inline-block;
+  background: rgba(255, 255, 255, 0.16);
   padding: 8px 14px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid var(--border);
   border-radius: 999px;
   margin-bottom: 18px;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.2;
-  margin-bottom: 16px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 14px;
 }
 
-.subtitle, .section p {
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.8;
+.text {
+  color: #e2e8f0;
+  line-height: 1.9;
+  margin-bottom: 28px;
 }
 
-.actions {
-  margin-top: 28px;
+.buttons {
   display: flex;
-  justify-content: center;
   gap: 14px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .btn {
-  display: inline-block;
+  border: none;
   padding: 12px 22px;
   border-radius: 14px;
-  border: 1px solid var(--border);
-  transition: 0.3s;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
   cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  font-size: 1rem;
 }
 
 .btn:hover {
   transform: translateY(-3px);
-}
-
-.primary {
-  background: linear-gradient(135deg, var(--primary), #2563eb);
-  color: white;
-}
-
-.secondary {
-  background: rgba(255,255,255,0.08);
-  color: white;
-}
-
-.section {
-  padding: 70px 24px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 18px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 24px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
-.card h3 {
-  margin-bottom: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .contact {
-  text-align: center;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
 }
 
-.message {
+.output {
   margin-top: 18px;
-  color: #86efac;
   min-height: 24px;
-}
-
-.footer {
-  text-align: center;
-  padding: 22px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  color: #86efac;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (max-width: 640px) {
-  .nav {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .links {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }
