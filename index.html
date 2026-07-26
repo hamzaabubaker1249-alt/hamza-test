@@ -2,24 +2,47 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>موقعي</title>
-  <meta name="description" content="موقع بسيط وجميل بثلاثة ملفات فقط." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7c3aed" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Hamza" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
+  <title>حمزة أبو بكر</title>
+  <meta name="description" content="موقع شخصي أنيق وتعريفي عن حمزة أبو بكر، متجاوب ويعمل على الهاتف." />
 </head>
 <body>
-  <main class="container">
-    <section class="card">
-      <p class="tag">مرحبا</p>
-      <h1>موقع بسيط وجميل</h1>
-      <p class="text">هذا مثال كامل بثلاثة ملفات فقط: index.html و styles.css و app.js.</p>
+  <main class="page">
+    <section class="hero">
+      <div class="avatar">HB</div>
+      <p class="badge">Tripoli · Libya</p>
+      <h1>حمزة أبو بكر</h1>
+      <p class="subtitle">
+        مهتم بـ التقنية، البرمجة، Linux / Arch Linux، والألعاب وتعديلها وتطويرها.
+      </p>
 
-      <div class="buttons">
-        <button id="btn" class="btn">اضغط هنا</button>
-        <a class="btn contact" href="mailto:hamzaabubaker1249@gmail.com?subject=رسالة%20من%20الموقع&body=مرحبا%2C%20أريد%20التواصل%20معك">تواصل معي</a>
+      <div class="actions">
+        <a class="btn primary" href="mailto:your-email@example.com?subject=رسالة%20من%20الموقع">تواصل معي</a>
+        <a class="btn secondary" href="#about">اعرف أكثر</a>
       </div>
+    </section>
 
-      <p id="output" class="output"></p>
+    <section id="about" class="cards">
+      <article class="card">
+        <h2>عنّي</h2>
+        <p>هذا موقع تعريفي بسيط وأنيق، مناسب للعرض على الهاتف وعلى المتصفح.</p>
+      </article>
+
+      <article class="card">
+        <h2>اهتماماتي</h2>
+        <p>التقنية، البرمجة، أنظمة التشغيل، والألعاب مع التركيز على التعلم العملي.</p>
+      </article>
+
+      <article class="card">
+        <h2>تواصل</h2>
+        <p>يمكنك الضغط على زر التواصل لفتح البريد مباشرة.</p>
+      </article>
     </section>
   </main>
 
