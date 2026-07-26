@@ -3,68 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>موقعي الشخصي</title>
-  <meta name="description" content="موقع جميل بسيط مع واجهة حديثة وanimation." />
+  <title>موقعي</title>
+  <meta name="description" content="موقع بسيط وجميل بثلاثة ملفات فقط." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="nav">
-      <div class="logo">HamzaSite</div>
-      <div class="links">
-        <a href="#about">عن الموقع</a>
-        <a href="#features">المميزات</a>
-        <a href="#contact">تواصل</a>
+  <main class="container">
+    <section class="card">
+      <p class="tag">مرحبا</p>
+      <h1>موقع بسيط وجميل</h1>
+      <p class="text">هذا مثال كامل بثلاثة ملفات فقط: index.html و styles.css و app.js.</p>
+
+      <div class="buttons">
+        <button id="btn" class="btn">اضغط هنا</button>
+        <a class="btn contact" href="mailto:hamzaabubaker1249@gmail.com?subject=رسالة%20من%20الموقع&body=مرحبا%2C%20أريد%20التواصل%20معك">تواصل معي</a>
       </div>
-    </nav>
 
-    <section class="hero-content">
-      <p class="badge">Welcome</p>
-      <h1>موقع أنيق وسريع مع تصميم حديث</h1>
-      <p class="subtitle">
-        هذا قالب جاهز للرفع على GitHub Pages، ويحتوي على تصميم جميل وحركة بسيطة.
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="#features">ابدأ الآن</a>
-        <a class="btn secondary" href="#contact">تواصل معي</a>
-      </div>
-    </section>
-  </header>
-
-  <main>
-    <section id="about" class="section">
-      <h2>عن الموقع</h2>
-      <p>
-        هذا مثال لموقع ثابت باستخدام HTML وCSS وJavaScript، مناسب للعرض الشخصي أو صفحة تعريفية.
-      </p>
-    </section>
-
-    <section id="features" class="section grid">
-      <article class="card">
-        <h3>تصميم حديث</h3>
-        <p>ألوان متناسقة ومظهر نظيف مع تأثيرات بسيطة.</p>
-      </article>
-      <article class="card">
-        <h3>سهل التعديل</h3>
-        <p>كل جزء في ملف منفصل ليسهل التحديث والتطوير.</p>
-      </article>
-      <article class="card">
-        <h3>متوافق مع الموبايل</h3>
-        <p>يعمل بشكل جيد على الشاشات الصغيرة والكبيرة.</p>
-      </article>
-    </section>
-
-    <section id="contact" class="section contact">
-      <h2>تواصل</h2>
-      <p>يمكنك وضع بريدك أو روابطك هنا.</p>
-      <button id="helloBtn" class="btn primary">اضغطني</button>
-      <p id="message" class="message"></p>
+      <p id="output" class="output"></p>
     </section>
   </main>
-
-  <footer class="footer">
-    <p>© 2026 HamzaSite</p>
-  </footer>
 
   <script src="app.js"></script>
 </body>
