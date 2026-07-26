@@ -1,67 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Ephemeral Viewer</title>
-
-  <!-- iOS / Apple PWA Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Ephemeral">
-  <link rel="apple-touch-icon" href="icon-192.png">
-
-  <!-- Manifest Link -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>موقعي الشخصي</title>
+  <meta name="description" content="موقع جميل بسيط مع واجهة حديثة وanimation." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="logo">HamzaSite</div>
+      <div class="links">
+        <a href="#about">عن الموقع</a>
+        <a href="#features">المميزات</a>
+        <a href="#contact">تواصل</a>
+      </div>
+    </nav>
 
-  <!-- Legal Disclaimer Modal -->
-  <div id="disclaimer-modal" class="modal-overlay">
-    <div class="modal-content">
-      <h2>Legal Disclaimer & Terms</h2>
-      <p>
-        This application is a <strong>zero-log, ephemeral temporary viewer</strong>. 
-        It does not permanently store browsing history, logs, or user identifiers.
+    <section class="hero-content">
+      <p class="badge">Welcome</p>
+      <h1>موقع أنيق وسريع مع تصميم حديث</h1>
+      <p class="subtitle">
+        هذا قالب جاهز للرفع على GitHub Pages، ويحتوي على تصميم جميل وحركة بسيطة.
       </p>
+      <div class="actions">
+        <a class="btn primary" href="#features">ابدأ الآن</a>
+        <a class="btn secondary" href="#contact">تواصل معي</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h2>عن الموقع</h2>
       <p>
-        By proceeding, you acknowledge that all browsing session data will be destroyed upon closing or refreshing the application, and you hold <strong>sole legal responsibility</strong> for all browsing activities and content accessed through this interface.
+        هذا مثال لموقع ثابت باستخدام HTML وCSS وJavaScript، مناسب للعرض الشخصي أو صفحة تعريفية.
       </p>
-      <button id="accept-btn" class="btn btn-primary">I Accept & Assume Full Responsibility</button>
-    </div>
-  </div>
+    </section>
 
-  <!-- Main Application UI -->
-  <div class="app-container">
-    
-    <!-- Navigation / Header Bar -->
-    <header class="app-header">
-      <form id="nav-form" class="nav-form">
-        <input 
-          type="url" 
-          id="address-bar" 
-          placeholder="Enter URL (e.g., https://example.com)..." 
-          required 
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
-        <button type="submit" class="btn btn-nav">Go</button>
-      </form>
-      <button id="wipe-btn" class="btn btn-danger">Wipe Session</button>
-    </header>
+    <section id="features" class="section grid">
+      <article class="card">
+        <h3>تصميم حديث</h3>
+        <p>ألوان متناسقة ومظهر نظيف مع تأثيرات بسيطة.</p>
+      </article>
+      <article class="card">
+        <h3>سهل التعديل</h3>
+        <p>كل جزء في ملف منفصل ليسهل التحديث والتطوير.</p>
+      </article>
+      <article class="card">
+        <h3>متوافق مع الموبايل</h3>
+        <p>يعمل بشكل جيد على الشاشات الصغيرة والكبيرة.</p>
+      </article>
+    </section>
 
-    <!-- Embedded Web Viewport -->
-    <main class="viewport-container">
-      <iframe id="web-viewport" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-    </main>
+    <section id="contact" class="section contact">
+      <h2>تواصل</h2>
+      <p>يمكنك وضع بريدك أو روابطك هنا.</p>
+      <button id="helloBtn" class="btn primary">اضغطني</button>
+      <p id="message" class="message"></p>
+    </section>
+  </main>
 
-  </div>
+  <footer class="footer">
+    <p>© 2026 HamzaSite</p>
+  </footer>
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
