@@ -1,6 +1,4 @@
-const btn = document.getElementById('btn');
-const output = document.getElementById('output');
-
-btn.addEventListener('click', () => {
-  output.textContent = 'تم الضغط على الزر بنجاح.';
+const btn = document.querySelector('.primary');
+btn?.addEventListener('click', () => {
+  document.title = 'حمزة أبو بكر - تم فتح التواصل';
 });
