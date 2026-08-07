@@ -1,51 +1,407 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#7c3aed" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Hamza" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>حمزة أبو بكر</title>
-  <meta name="description" content="موقع شخصي أنيق وتعريفي عن حمزة أبو بكر، متجاوب ويعمل على الهاتف." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NULLBYTE // Ethical Hacking for Beginners</title>
+<meta name="description" content="A free, structured roadmap for beginners to learn ethical hacking — networking, Linux, scripting, web security, tools and CTFs." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <div class="avatar">HB</div>
-      <p class="badge">Tripoli · Libya</p>
-      <h1>حمزة أبو بكر</h1>
-      <p class="subtitle">
-        مهتم بـ التقنية، البرمجة، Linux / Arch Linux، والألعاب وتعديلها وتطويرها.
+
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>NMAP</span><i>◆</i><span>WIRESHARK</span><i>◆</i><span>BURP SUITE</span><i>◆</i>
+    <span>KALI LINUX</span><i>◆</i><span>OWASP TOP 10</span><i>◆</i><span>METASPLOIT</span><i>◆</i>
+    <span>SQL INJECTION</span><i>◆</i><span>XSS</span><i>◆</i><span>PRIVILEGE ESCALATION</span><i>◆</i>
+    <span>RECON</span><i>◆</i><span>OSINT</span><i>◆</i><span>CTF</span><i>◆</i>
+    <span>NMAP</span><i>◆</i><span>WIRESHARK</span><i>◆</i><span>BURP SUITE</span><i>◆</i>
+    <span>KALI LINUX</span><i>◆</i><span>OWASP TOP 10</span><i>◆</i><span>METASPLOIT</span><i>◆</i>
+    <span>SQL INJECTION</span><i>◆</i><span>XSS</span><i>◆</i><span>PRIVILEGE ESCALATION</span><i>◆</i>
+    <span>RECON</span><i>◆</i><span>OSINT</span><i>◆</i><span>CTF</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<header class="nav" id="nav">
+  <a class="logo" href="#home">
+    <span class="logo-prompt">guest@nullbyte</span><span class="logo-colon">:~$</span>
+    <span class="logo-name">./start_learning</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#ethics" data-spy>Ethics</a>
+    <a href="#roadmap" data-spy>Roadmap</a>
+    <a href="#topics" data-spy>Topics</a>
+    <a href="#tools" data-spy>Tools</a>
+    <a href="#lab" data-spy>Live Lab</a>
+    <a href="#faq" data-spy>FAQ</a>
+  </nav>
+  <a href="#roadmap" class="btn btn-small">[ START ]</a>
+</header>
+
+<main>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+
+    <div class="hero-copy">
+      <p class="eyebrow reveal">// SYSTEM ONLINE — TRAINING MODE</p>
+      <h1 class="display">
+        <span class="scramble" data-text="Hack to learn.">Hack to learn.</span><br />
+        <span class="scramble accent-green" data-text="Not to harm.">Not to harm.</span>
+      </h1>
+      <p class="lede reveal">
+        A free, zero-to-hero roadmap for complete beginners. Learn how real
+        attackers think — so you can become the person who stops them.
       </p>
-
-      <div class="actions">
-        <a class="btn primary" href="mailto:your-email@example.com?subject=رسالة%20من%20الموقع">تواصل معي</a>
-        <a class="btn secondary" href="#about">اعرف أكثر</a>
+      <div class="hero-actions reveal">
+        <a href="#roadmap" class="btn btn-primary">[ START THE ROADMAP ]</a>
+        <a href="#lab" class="btn btn-ghost">[ TRY THE LIVE LAB ]</a>
       </div>
-    </section>
+      <ul class="hero-stats reveal">
+        <li><b>06</b><span>learning phases</span></li>
+        <li><b>40+</b><span>skills mapped</span></li>
+        <li><b>100%</b><span>free resources</span></li>
+        <li><b>01</b><span>rule: stay legal</span></li>
+      </ul>
+    </div>
 
-    <section id="about" class="cards">
-      <article class="card">
-        <h2>عنّي</h2>
-        <p>هذا موقع تعريفي بسيط وأنيق، مناسب للعرض على الهاتف وعلى المتصفح.</p>
-      </article>
+    <div class="hero-terminal reveal">
+      <div class="term">
+        <div class="term-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="term-title">boot_sequence.sh — bash</span>
+        </div>
+        <div class="term-body" id="bootTerm" aria-live="polite"></div>
+      </div>
+    </div>
 
-      <article class="card">
-        <h2>اهتماماتي</h2>
-        <p>التقنية، البرمجة، أنظمة التشغيل، والألعاب مع التركيز على التعلم العملي.</p>
-      </article>
+  </div>
+</section>
 
-      <article class="card">
-        <h2>تواصل</h2>
-        <p>يمكنك الضغط على زر التواصل لفتح البريد مباشرة.</p>
-      </article>
-    </section>
-  </main>
+<!-- ══ ETHICS ══ -->
+<section class="section" id="ethics">
+  <header class="sec-head">
+    <p class="sec-num">// 01</p>
+    <h2 class="sec-title scramble-io" data-text="Read this first. Seriously.">Read this first. Seriously.</h2>
+  </header>
 
-  <script src="app.js"></script>
+  <div class="ethics-board reveal">
+    <div class="ethics-flag">
+      <span class="warn-badge">⚠ LEGAL</span>
+      <p>Unauthorized access to any computer system is a <b>crime</b> in almost every
+      country. Everything on this site is for learning on systems <b>you own</b> or
+      have <b>written permission</b> to test.</p>
+    </div>
+    <ol class="ethics-rules">
+      <li class="reveal">
+        <span class="rule-num">01</span>
+        <div><h3>Get written permission</h3>
+        <p>No contract, no consent, no hacking. Practice only in legal labs: TryHackMe, HackTheBox, OverTheWire, your own virtual machines.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="rule-num">02</span>
+        <div><h3>Do no harm</h3>
+        <p>Never crash services, delete data, or touch real user information.</p></div>
+      </li>
+      <li class="reveal">
+        <span class="rule-num">03</span>
+        <div><h3>Report, don't exploit</h3>
+        <p>Found a bug in someone's site? Use their bug-bounty program or disclose responsibly.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ ROADMAP ══ -->
+<section class="section" id="roadmap">
+  <header class="sec-head">
+    <p class="sec-num">// 02</p>
+    <h2 class="sec-title scramble-io" data-text="The Roadmap">The Roadmap</h2>
+    <p class="sec-sub">Six phases. Do them in order. Skipping fundamentals is the #1 reason beginners quit.</p>
+  </header>
+
+  <div class="phases">
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">00</span></div>
+      <div class="phase-card">
+        <div class="phase-meta"><span class="chip">~1 week</span><span class="chip chip-dim">difficulty ▪○○○○</span></div>
+        <h3>Mindset &amp; Ethics</h3>
+        <p>Understand white-hat vs black-hat. Set up your study habit, note-taking, and learn to research like an engineer.</p>
+        <ul class="skills"><li>Threat models</li><li>White-hat mindset</li><li>Research skills</li></ul>
+        <p class="res">→ <a href="https://tryhackme.com" target="_blank" rel="noopener">TryHackMe: Intro to Cyber Security</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">01</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/computer-fundamentals-hardware/640/400" alt="Computer hardware fundamentals" loading="lazy" />
+        <div class="phase-meta"><span class="chip">4–6 weeks</span><span class="chip chip-dim">difficulty ▪▪○○○</span></div>
+        <h3>Computer Fundamentals</h3>
+        <p>How computers actually work: hardware, OS, processes, memory, files and permissions.</p>
+        <ul class="skills"><li>Windows internals</li><li>File systems</li><li>Processes &amp; services</li><li>VirtualBox</li></ul>
+        <p class="res">→ <a href="https://professormesser.com" target="_blank" rel="noopener">Professor Messer — CompTIA A+ (free videos)</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">02</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/linux-terminal-green/640/400" alt="Linux terminal" loading="lazy" />
+        <div class="phase-meta"><span class="chip">6–8 weeks</span><span class="chip chip-dim">difficulty ▪▪○○○</span></div>
+        <h3>Linux &amp; the Command Line</h3>
+        <p>Install Ubuntu or Kali in a virtual machine and live in the terminal. 90% of security tools run on Linux.</p>
+        <ul class="skills"><li>Bash navigation</li><li>Permissions</li><li>Pipes &amp; redirects</li><li>SSH</li></ul>
+        <p class="res">→ <a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire: Bandit wargame</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">03</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/network-server-room-cables/640/400" alt="Network server room" loading="lazy" />
+        <div class="phase-meta"><span class="chip">6–8 weeks</span><span class="chip chip-dim">difficulty ▪▪▪○○</span></div>
+        <h3>Networking Deep-Dive</h3>
+        <p>IP addresses, ports, DNS, HTTP, the OSI model — and how to watch traffic with Wireshark.</p>
+        <ul class="skills"><li>TCP/IP &amp; OSI</li><li>DNS / HTTP / TLS</li><li>Subnetting</li><li>Wireshark</li></ul>
+        <p class="res">→ <a href="https://tryhackme.com/room/introtonetworking" target="_blank" rel="noopener">TryHackMe: Intro to Networking</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">04</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/python-code-screen-dark/640/400" alt="Programming code on screen" loading="lazy" />
+        <div class="phase-meta"><span class="chip">8 weeks</span><span class="chip chip-dim">difficulty ▪▪▪○○</span></div>
+        <h3>Scripting: Python &amp; Bash</h3>
+        <p>Automate everything. Write port scanners, brute-forcers and parsers. Small scripts, big power.</p>
+        <ul class="skills"><li>Python basics</li><li>Sockets</li><li>Requests library</li><li>Bash scripting</li></ul>
+        <p class="res">→ <a href="https://automatetheboringstuff.com" target="_blank" rel="noopener">Automate the Boring Stuff (free book)</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">05</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/web-security-code-lock/640/400" alt="Web application security" loading="lazy" />
+        <div class="phase-meta"><span class="chip">8–12 weeks</span><span class="chip chip-dim">difficulty ▪▪▪▪○</span></div>
+        <h3>Web Application Security</h3>
+        <p>The OWASP Top 10: SQL injection, XSS, broken auth. Hunt bugs on legal labs with Burp Suite.</p>
+        <ul class="skills"><li>OWASP Top 10</li><li>Burp Suite</li><li>SQLi &amp; XSS</li><li>Recon</li></ul>
+        <p class="res">→ <a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger Web Security Academy (free)</a></p>
+      </div>
+    </article>
+
+    <article class="phase reveal">
+      <div class="phase-rail"><span class="phase-node">06</span></div>
+      <div class="phase-card">
+        <img class="phase-img" src="https://picsum.photos/seed/ctf-hacking-competition/640/400" alt="CTF competition" loading="lazy" />
+        <div class="phase-meta"><span class="chip">forever</span><span class="chip chip-dim">difficulty ▪▪▪▪▪</span></div>
+        <h3>CTFs, Labs &amp; Certifications</h3>
+        <p>Sharpen everything against real (legal) targets, write up your solves, and aim for your first certification.</p>
+        <ul class="skills"><li>picoCTF</li><li>HackTheBox</li><li>Write-ups</li><li>eJPT → Security+ → OSCP</li></ul>
+        <p class="res">→ <a href="https://picoctf.org" target="_blank" rel="noopener">picoCTF — beginner-friendly competitions</a></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ TOPICS ══ -->
+<section class="section" id="topics">
+  <header class="sec-head">
+    <p class="sec-num">// 03</p>
+    <h2 class="sec-title scramble-io" data-text="What you'll actually learn">What you'll actually learn</h2>
+  </header>
+
+  <div class="topics-grid">
+    <article class="topic t-net reveal">
+      <h3>Networking</h3>
+      <p>Packets, ports, protocols. Learn what happens between your keyboard and the server — then learn to intercept it.</p>
+      <span class="topic-tag">CORE</span>
+    </article>
+    <article class="topic t-linux reveal">
+      <h3>Linux</h3>
+      <p>The hacker's operating system. Master the shell and you master the tools.</p>
+      <span class="topic-tag">CORE</span>
+    </article>
+    <article class="topic t-web reveal">
+      <h3>Web Hacking</h3>
+      <p>SQL injection, XSS, CSRF, auth bypass — the bugs behind real breaches.</p>
+      <span class="topic-tag">OFFENSE</span>
+    </article>
+    <article class="topic t-crypto reveal">
+      <h3>Cryptography</h3>
+      <p>Hashes, encoding, encryption. Learn why <code>admin123</code> falls in milliseconds.</p>
+      <span class="topic-tag">THEORY</span>
+    </article>
+    <article class="topic t-osint reveal">
+      <h3>OSINT / Recon</h3>
+      <p>Open-source intelligence: legally gathering information from public sources.</p>
+      <span class="topic-tag">RECON</span>
+    </article>
+    <article class="topic t-blue reveal">
+      <h3>Defense (Blue Team)</h3>
+      <p>Detection, logs, hardening. Most first jobs are on the blue side.</p>
+      <span class="topic-tag">DEFENSE</span>
+    </article>
+    <article class="topic t-ctf reveal">
+      <h3>CTF &amp; Labs — your legal playground</h3>
+      <p>TryHackMe · HackTheBox · OverTheWire · picoCTF · PortSwigger Academy · DVWA — all free, all legal.</p>
+      <span class="topic-tag">PRACTICE</span>
+    </article>
+  </div>
+</section>
+
+<!-- ══ TOOLS (clickable → opens code modal) ══ -->
+<section class="section" id="tools">
+  <header class="sec-head">
+    <p class="sec-num">// 04</p>
+    <h2 class="sec-title scramble-io" data-text="The toolkit">The toolkit</h2>
+    <p class="sec-sub">Click any tool to see its <b>install commands + usage code</b>. All free.</p>
+  </header>
+
+  <div class="tools-grid">
+    <article class="tool reveal" data-tool="nmap" role="button" tabindex="0"><span class="tool-cat">RECON</span><h3>Nmap</h3><p>Network scanner. Finds hosts, open ports and services.</p><div class="diff"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="wireshark" role="button" tabindex="0"><span class="tool-cat">ANALYSIS</span><h3>Wireshark</h3><p>Captures and inspects network traffic live.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="burpsuite" role="button" tabindex="0"><span class="tool-cat">WEB</span><h3>Burp Suite</h3><p>Web proxy to intercept and modify HTTP requests.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="metasploit" role="button" tabindex="0"><span class="tool-cat">EXPLOIT</span><h3>Metasploit</h3><p>Framework of known exploits — authorized labs only.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="john" role="button" tabindex="0"><span class="tool-cat">PASSWORDS</span><h3>John the Ripper</h3><p>Offline password cracker for learning hash attacks.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="hashcat" role="button" tabindex="0"><span class="tool-cat">PASSWORDS</span><h3>Hashcat</h3><p>GPU-powered hash cracking. Blazing fast.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="sqlmap" role="button" tabindex="0"><span class="tool-cat">WEB</span><h3>SQLMap</h3><p>Detects and demonstrates SQL injection flaws.</p><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+    <article class="tool reveal" data-tool="ffuf" role="button" tabindex="0"><span class="tool-cat">RECON</span><h3>FFuF / Gobuster</h3><p>Brute-forces hidden files &amp; directories on web servers.</p><div class="diff"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><span class="tool-hint">VIEW CODE →</span></article>
+  </div>
+</section>
+
+<!-- ══ TOOL CODE MODAL ══ -->
+<div class="modal" id="toolModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="term-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="term-title" id="modalFile">tool.sh</span>
+      <button class="modal-x" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="modal-head">
+      <span class="tool-cat" id="modalCat"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+    <div class="modal-legal">⚠ Use only on systems you own or have written permission to test.</div>
+    <div class="modal-code-wrap">
+      <button class="copy-btn" id="copyBtn">[ COPY ]</button>
+      <pre class="modal-code"><code id="modalCode"></code></pre>
+    </div>
+    <div class="modal-foot">// practice labs: TryHackMe · HackTheBox · DVWA · PortSwigger Academy</div>
+  </div>
+</div>
+
+<!-- ══ LIVE LAB ══ -->
+<section class="section" id="lab">
+  <header class="sec-head">
+    <p class="sec-num">// 05</p>
+    <h2 class="sec-title scramble-io" data-text="Live Lab — your first CTF">Live Lab — your first CTF</h2>
+    <p class="sec-sub">A safe, simulated terminal. Type <code>help</code> to begin. Find the flag 🚩</p>
+  </header>
+
+  <div class="lab-grid">
+    <div class="term lab-term reveal">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">guest@nullbyte: ~/lab</span>
+      </div>
+      <div class="term-body lab-body" id="labOut"></div>
+      <form class="lab-input" id="labForm">
+        <span class="prompt">guest@nullbyte:~$</span>
+        <input id="labCmd" type="text" autocomplete="off" spellcheck="false" aria-label="terminal command input" placeholder="type help…" />
+      </form>
+    </div>
+
+    <aside class="lab-notes reveal">
+      <h3>Mission briefing</h3>
+      <ol>
+        <li><b>Recon first.</b> Hackers always scan before they attack.</li>
+        <li><b>Find the weak point.</b> Something uses a terrible password.</li>
+        <li><b>Crack it.</b> Watch how fast weak passwords die.</li>
+        <li><b>Capture the flag.</b></li>
+      </ol>
+      <div class="lab-tip">
+        <span>💡 Lesson hidden in this lab:</span>
+        <p>Password length beats complexity. Try <code>crack password</code> vs <code>crack correct-horse-battery</code>.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ══ FAQ + GLOSSARY ══ -->
+<section class="section" id="faq">
+  <header class="sec-head">
+    <p class="sec-num">// 06</p>
+    <h2 class="sec-title scramble-io" data-text="Questions every beginner asks">Questions every beginner asks</h2>
+  </header>
+
+  <div class="faq-grid">
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Is ethical hacking legal?<span class="faq-x">+</span></button>
+        <div class="faq-a"><p>Yes — when you have permission. Attacking systems without written authorization is illegal everywhere. Stick to labs like TryHackMe and your own VMs.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Do I need to be good at math or coding?<span class="faq-x">+</span></button>
+        <div class="faq-a"><p>No heavy math. You'll need <em>some</em> scripting eventually (Python), but you can start phases 0–3 with zero coding.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How long until I can get a job?<span class="faq-x">+</span></button>
+        <div class="faq-a"><p>Realistically 1–3 years of consistent study. Certifications (Security+, eJPT) and CTF write-ups speed this up.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What computer do I need?<span class="faq-x">+</span></button>
+        <div class="faq-a"><p>Any machine with 8GB+ RAM can run Kali Linux in a virtual machine. Old laptops are perfect for home labs.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Should I pay for courses?<span class="faq-x">+</span></button>
+        <div class="faq-a"><p>Not at first. TryHackMe, PortSwigger Academy, OverTheWire and picoCTF are free and excellent.</p></div>
+      </div>
+    </div>
+
+    <div class="glossary reveal">
+      <h3>// glossary.txt</h3>
+      <dl>
+        <dt>White-hat</dt><dd>Ethical hacker who works with permission.</dd>
+        <dt>Exploit</dt><dd>Code that takes advantage of a vulnerability.</dd>
+        <dt>Payload</dt><dd>The code delivered by an exploit.</dd>
+        <dt>Recon</dt><dd>Information gathering before an attack.</dd>
+        <dt>Hash</dt><dd>One-way fingerprint of data (e.g. passwords).</dd>
+        <dt>Pentest</dt><dd>Authorized simulated attack on a system.</dd>
+        <dt>CTF</dt><dd>Capture The Flag — hacking competitions.</dd>
+        <dt>Zero-day</dt><dd>A bug unknown to the vendor, no patch yet.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <p class="footer-word display" aria-hidden="true">NULLBYTE</p>
+  <div class="footer-row">
+    <p>Built for learning. Practice only where it's legal.<br/>
+    <span class="dim">Unauthorized access to computer systems is a crime.</span></p>
+    <p class="dim">© <span id="year"></span> NULLBYTE Academy — stay curious, stay legal.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
