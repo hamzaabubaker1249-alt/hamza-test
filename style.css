@@ -1,116 +1,147 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتمام الطلب - FLASH CARDS</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .order-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .phone-number {
-            font-size: 32px;
-            font-weight: bold;
-            color: #00d2ff;
-            margin: 20px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            display: inline-block;
-        }
-        .order-details {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        .btn-contact {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .btn-contact:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <h1>FLASH CARDS</h1>
-        </div>
-        <nav>
-            <a href="../index.html">الرئيسية</a>
-            <a href="../products.html">المنتجات</a>
-        </nav>
-    </header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <main>
-        <div class="order-container">
-            <h2>📋 إتمام طلبك</h2>
-            
-            <div class="order-details" id="orderDetails">
-                <!-- Order details will be inserted here -->
-            </div>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    min-height: 100vh;
+}
 
-            <div style="margin: 30px 0;">
-                <p style="font-size: 20px; margin-bottom: 20px;">
-                    ✅ لإتمام طلبك، يرجى التواصل معنا على الرقم التالي:
-                </p>
-                
-                <div class="phone-number">
-                     0917511511
-                </div>
-            </div>
+header {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
 
-            <div style="margin-top: 30px;">
-                <a href="tel:0917511511" class="btn-contact">📞 اتصال مباشر</a>
-                <a href="https://wa.me/218917511511" class="btn-contact">💬 واتساب</a>
-            </div>
+.logo h1 {
+    font-size: 2.5em;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+}
 
-            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 10px;">
-                <h3>⏰ ساعات العمل</h3>
-                <p>متاحون للرد على مدار الساعة</p>
-            </div>
-        </div>
-    </main>
+nav {
+    margin-top: 20px;
+}
 
-    <footer>
-        <p>&copy; 2026 FLASH CARDS - جميع الحقوق محفوظة</p>
-    </footer>
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
 
-    <script>
-        // Get order details from URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const productName = urlParams.get('product');
-        const price = urlParams.get('price');
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
 
-        if (productName && price) {
-            document.getElementById('orderDetails').innerHTML = `
-                <h3>تفاصيل الطلب</h3>
-                <p><strong>المنتج:</strong> ${productName}</p>
-                <p><strong>السعر:</strong> ${price} دينار ليبي</p>
-            `;
-        } else {
-            document.getElementById('orderDetails').innerHTML = `
-                <h3>تفاصيل الطلب</h3>
-                <p>يرجى اختيار منتج من المتجر</p>
-                <a href="../products.html" class="btn-contact">الذهاب للمتجر</a>
-            `;
-        }
-    </script>
-</body>
-</html>
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.payment-methods, .featured-products, .product-category {
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #00d2ff;
+}
+
+.methods-grid, .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.method, .product-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.method:hover, .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
+}
+
+.product-card h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.8em;
+    color: #00d2ff;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+button {
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2em;
+    }
+    
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .methods-grid, .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
