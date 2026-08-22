@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المتجر - FLASH CARDS</title>
+    <title>المتجر - MD Store</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
 </head>
@@ -11,11 +11,9 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-icon">
-                    <span class="lightning">⚡</span>
-                </div>
+                <img src="images/logo.png" alt="MD Store Logo" style="height: 45px; width: auto; margin-left: 10px; border-radius: 8px;">
                 <div class="logo-text">
-                    <h1>FLASH CARDS</h1>
+                    <h1>MD Store</h1>
                 </div>
             </div>
             
@@ -40,7 +38,7 @@
 
     <main style="padding: 120px 0 60px;">
         <div class="container">
-            <h1 class="section-title">جميع المنتجات</h1>
+            <h1 class="section-title">جميع المنتجات والخدمات</h1>
             
             <div class="products-grid" id="allProducts">
                 <!-- All products loaded by JavaScript -->
@@ -48,11 +46,9 @@
         </div>
     </main>
 
-    <!-- Cart Overlay (MUST BE OUTSIDE SIDEBAR) -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-overlay" style="pointer-events: none; opacity: 0;"></div>
         <div class="cart-content">
             <div class="cart-header">
                 <h2>سلة المشتريات</h2>
@@ -85,11 +81,17 @@
                     <div class="product-icon">${product.icon}</div>
                     <h3 class="product-title">${product.name}</h3>
                     <p class="product-desc">${product.desc}</p>
-                    <div class="product-price">${product.price} دينار</div>
+                    <div class="product-price">${product.price}</div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-full" onclick="addToCartById('${product.id}')">
-                            أضف للسلة
-                        </button>
+                        ${product.isCallForPrice ? `
+                            <a href="tel:0917511511" class="btn btn-primary btn-full" style="background-color: #25D366; text-decoration: none; display: block; text-align: center; color: white;">
+                                📞 اتصل للسعر: 0917511511
+                            </a>
+                        ` : `
+                            <button class="btn btn-primary btn-full" onclick="addToCartById('${product.id}')">
+                                أضف للسلة
+                            </button>
+                        `}
                     </div>
                 </div>
             `).join('');
