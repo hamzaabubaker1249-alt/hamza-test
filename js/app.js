@@ -1,6 +1,16 @@
 // Products data
 const products = [
     {
+        id: 'smm-services',
+        name: 'خدمات التسويق (SMM)',
+        icon: '📈',
+        price: 'اتصل للسعر',
+        desc: 'زيادة المتابعين، اللايكات، والمشاهدات لجميع المنصات بجودة عالية وسرعة.',
+        category: 'services',
+        badge: 'خدمة مميزة',
+        isCallForPrice: true
+    },
+    {
         id: 'netflix-vip',
         name: 'نتفليكس و شاهد VIP',
         icon: '🍿',
@@ -163,93 +173,6 @@ const products = [
         price: 219,
         desc: 'شحن فوري',
         category: 'games'
-    },
-    // ==========================================
-    // منتجات سناب شات بلس الجديدة
-    // ==========================================
-    {
-        id: 'snapchat-plus-3m',
-        name: 'سناب شات بلس - 3 أشهر',
-        icon: '👻',
-        price: 55,
-        desc: 'اشتراك سناب شات بلس رسمي لمدة 3 أشهر',
-        category: 'apps',
-        badge: 'عرض مميز'
-    },
-    {
-        id: 'snapchat-plus-6m',
-        name: 'سناب شات بلس - 6 أشهر',
-        icon: '👻',
-        price: 85,
-        desc: 'اشتراك سناب شات بلس رسمي لمدة 6 أشهر',
-        category: 'apps',
-        badge: 'توفير'
-    },
-    {
-        id: 'snapchat-plus-12m',
-        name: 'سناب شات بلس - 12 شهر',
-        icon: '👻',
-        price: 240,
-        desc: 'اشتراك سناب شات بلس رسمي لمدة 12 شهر',
-        category: 'apps',
-        badge: 'أفضل قيمة'
-    },
-    // ==========================================
-    // خدمات تعزيز SMM (مستوحاة من libyaplus1.com)
-    // ==========================================
-    {
-        id: 'smm-instagram-followers',
-        name: 'متابعين انستجرام',
-        icon: '📸',
-        price: 5,
-        desc: 'زيادة متابعين انستجرام حقيقيين وتفاعليين',
-        category: 'smm',
-        badge: 'SMM'
-    },
-    {
-        id: 'smm-instagram-likes',
-        name: 'إعجابات انستجرام',
-        icon: '❤️',
-        price: 5,
-        desc: 'زيادة الإعجابات على منشورات انستجرام بسرعة',
-        category: 'smm',
-        badge: 'SMM'
-    },
-    {
-        id: 'smm-youtube-views',
-        name: 'مشاهدات يوتيوب',
-        icon: '📺',
-        price: 5,
-        desc: 'زيادة مشاهدات فيديوهات يوتيوب لتحسين الخوارزمية',
-        category: 'smm',
-        badge: 'SMM'
-    },
-    {
-        id: 'smm-youtube-subscribers',
-        name: 'مشتركين يوتيوب',
-        icon: '🔴',
-        price: 5,
-        desc: 'زيادة عدد المشتركين في قناتك على يوتيوب',
-        category: 'smm',
-        badge: 'SMM'
-    },
-    {
-        id: 'smm-twitter-followers',
-        name: 'متابعين تويتر (X)',
-        icon: '🐦',
-        price: 5,
-        desc: 'زيادة متابعين تويتر لرفع تفاعل حسابك',
-        category: 'smm',
-        badge: 'SMM'
-    },
-    {
-        id: 'smm-facebook-likes',
-        name: 'إعجابات فيسبوك',
-        icon: '👍',
-        price: 5,
-        desc: 'زيادة إعجابات صفحة أو منشور فيسبوك',
-        category: 'smm',
-        badge: 'SMM'
     }
 ];
 
@@ -265,11 +188,17 @@ function loadFeaturedProducts() {
             <div class="product-icon">${product.icon}</div>
             <h3 class="product-title">${product.name}</h3>
             <p class="product-desc">${product.desc}</p>
-            <div class="product-price">${product.price} دينار</div>
+            <div class="product-price">${product.price}</div>
             <div class="product-actions">
-                <button class="btn btn-primary btn-full" onclick="addToCartById('${product.id}')">
-                    أضف للسلة
-                </button>
+                ${product.isCallForPrice ? `
+                    <a href="tel:0917511511" class="btn btn-primary btn-full" style="background-color: #25D366; text-decoration: none; display: block; text-align: center; color: white;">
+                        📞 اتصل للسعر: 0917511511
+                    </a>
+                ` : `
+                    <button class="btn btn-primary btn-full" onclick="addToCartById('${product.id}')">
+                        أضف للسلة
+                    </button>
+                `}
             </div>
         </div>
     `).join('');
