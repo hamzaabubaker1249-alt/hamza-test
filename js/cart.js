@@ -24,28 +24,6 @@ function addToCart(product) {
     showNotification('تمت الإضافة للسلة بنجاح! ✅');
 }
 
-// Remove from cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    saveCart();
-    updateCartUI();
-}
-
-// Update quantity
-function updateQuantity(productId, quantity) {
-    const item = cart.find(item => item.id === productId);
-    if (item) {
-        item.quantity = Math.max(1, quantity);
-        saveCart();
-        updateCartUI();
-    }
-}
-
-// Save cart to localStorage
-function saveCart() {
-    localStorage.setItem('flashcards_cart', JSON.stringify(cart));
-}
-
 // Update cart UI
 function updateCartUI() {
     const cartCount = document.getElementById('cartCount');
@@ -87,30 +65,17 @@ function updateCartUI() {
     }
 }
 
-// Open cart sidebar
-function openCart() {
-    document.getElementById('cartSidebar').classList.add('open');
-    document.body.style.overflow = 'hidden';
+// Save cart to localStorage
+function saveCart() {
+    localStorage.setItem('flashcards_cart', JSON.stringify(cart));
 }
 
-// Close cart sidebar
-function closeCart() {
-    document.getElementById('cartSidebar').classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-// Checkout
-function checkout() {
-    if (cart.length === 0) {
-        showNotification('السلة فارغة! أضف منتجات أولاً ⚠️', 'error');
-        return;
-    }
-    
-    // Save cart data for checkout page
-    localStorage.setItem('flashcards_checkout', JSON.stringify(cart));
-    
-    // Redirect to checkout page
-    window.location.href = 'checkout.html';
+// Remove from cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    updateCartUI();
+    showNotification('تم حذف المنتج من السلة');
 }
 
 // Show notification
@@ -118,54 +83,36 @@ function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: ${type === 'success' ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #e74c3c, #c0392b)'};
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-        font-weight: 700;
-        z-index: 3000;
-        animation: slideDown 0.3s ease;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    `;
-    
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideUp 0.3s ease';
+        notification.style.animation = 'slideDown 0.3s ease reverse';
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
-// Add notification animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+// Open cart sidebar and overlay
+function openCart() {
+    document.getElementById('cartSidebar').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close cart sidebar and overlay
+function closeCart() {
+    document.getElementById('cartSidebar').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Checkout function
+function checkout() {
+    if (cart.length === 0) {
+        showNotification('السلة فارغة!', 'error');
+        return;
     }
-    @keyframes slideUp {
-        from {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(-50%) translateY(-20px);
-        }
-    }
-`;
-document.head.appendChild(style);
+    window.location.href = 'checkout.html';
+}
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', initCart);
