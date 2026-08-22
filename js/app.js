@@ -30,7 +30,7 @@ const products = [
     {
         id: 'apps-package-30',
         name: 'باقة تطبيقات البلس',
-        icon: '',
+        icon: '📦',
         price: 105,
         desc: 'مضمونة 30 يوم - 80,000+ تطبيق',
         category: 'packages'
@@ -63,7 +63,7 @@ const products = [
     {
         id: 'pubg-1800',
         name: '1800 UC ببجي',
-        icon: '',
+        icon: '🎮',
         price: 240.5,
         desc: 'شحن فوري - مضمون 100%',
         category: 'games'
@@ -111,7 +111,7 @@ const products = [
     {
         id: 'valorant-5',
         name: 'فالورانت 5$',
-        icon: '',
+        icon: '🎯',
         price: 53.5,
         desc: 'شحن فوري',
         category: 'games'
@@ -143,7 +143,7 @@ const products = [
     {
         id: 'xbox-10',
         name: 'Xbox 10$',
-        icon: '',
+        icon: '🎮',
         price: 104,
         desc: 'شحن فوري',
         category: 'games'
@@ -163,6 +163,93 @@ const products = [
         price: 219,
         desc: 'شحن فوري',
         category: 'games'
+    },
+    // ==========================================
+    // منتجات سناب شات بلس الجديدة
+    // ==========================================
+    {
+        id: 'snapchat-plus-3m',
+        name: 'سناب شات بلس - 3 أشهر',
+        icon: '👻',
+        price: 55,
+        desc: 'اشتراك سناب شات بلس رسمي لمدة 3 أشهر',
+        category: 'apps',
+        badge: 'عرض مميز'
+    },
+    {
+        id: 'snapchat-plus-6m',
+        name: 'سناب شات بلس - 6 أشهر',
+        icon: '👻',
+        price: 85,
+        desc: 'اشتراك سناب شات بلس رسمي لمدة 6 أشهر',
+        category: 'apps',
+        badge: 'توفير'
+    },
+    {
+        id: 'snapchat-plus-12m',
+        name: 'سناب شات بلس - 12 شهر',
+        icon: '👻',
+        price: 240,
+        desc: 'اشتراك سناب شات بلس رسمي لمدة 12 شهر',
+        category: 'apps',
+        badge: 'أفضل قيمة'
+    },
+    // ==========================================
+    // خدمات تعزيز SMM (مستوحاة من libyaplus1.com)
+    // ==========================================
+    {
+        id: 'smm-instagram-followers',
+        name: 'متابعين انستجرام',
+        icon: '📸',
+        price: 5,
+        desc: 'زيادة متابعين انستجرام حقيقيين وتفاعليين',
+        category: 'smm',
+        badge: 'SMM'
+    },
+    {
+        id: 'smm-instagram-likes',
+        name: 'إعجابات انستجرام',
+        icon: '❤️',
+        price: 5,
+        desc: 'زيادة الإعجابات على منشورات انستجرام بسرعة',
+        category: 'smm',
+        badge: 'SMM'
+    },
+    {
+        id: 'smm-youtube-views',
+        name: 'مشاهدات يوتيوب',
+        icon: '📺',
+        price: 5,
+        desc: 'زيادة مشاهدات فيديوهات يوتيوب لتحسين الخوارزمية',
+        category: 'smm',
+        badge: 'SMM'
+    },
+    {
+        id: 'smm-youtube-subscribers',
+        name: 'مشتركين يوتيوب',
+        icon: '🔴',
+        price: 5,
+        desc: 'زيادة عدد المشتركين في قناتك على يوتيوب',
+        category: 'smm',
+        badge: 'SMM'
+    },
+    {
+        id: 'smm-twitter-followers',
+        name: 'متابعين تويتر (X)',
+        icon: '🐦',
+        price: 5,
+        desc: 'زيادة متابعين تويتر لرفع تفاعل حسابك',
+        category: 'smm',
+        badge: 'SMM'
+    },
+    {
+        id: 'smm-facebook-likes',
+        name: 'إعجابات فيسبوك',
+        icon: '👍',
+        price: 5,
+        desc: 'زيادة إعجابات صفحة أو منشور فيسبوك',
+        category: 'smm',
+        badge: 'SMM'
     }
 ];
 
