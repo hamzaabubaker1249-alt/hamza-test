@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FLASH CARDS - Digital Services & Recharge">
-    <title>FLASH CARDS | Digital Services & Recharge</title>
+    <meta name="description" content="MD Store - Digital Services & Recharge">
+    <title>MD Store | Digital Services & Recharge</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -16,11 +16,9 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-icon">
-                    <span class="lightning">⚡</span>
-                </div>
+                <img src="images/logo.png" alt="MD Store Logo" style="height: 45px; width: auto; margin-left: 10px; border-radius: 8px;">
                 <div class="logo-text">
-                    <h1>FLASH CARDS</h1>
+                    <h1>MD Store</h1>
                     <span>Digital Services</span>
                 </div>
             </div>
@@ -66,7 +64,7 @@
                 <span>بسرعة وأمان</span>
             </h1>
             <p class="hero-subtitle">
-                أفضل خدمات الشحن الرقمي في ليبيا - شدات ببجي، فري فاير، روبلوكس، 
+                أفضل خدمات الشحن الرقمي وخدمات SMM في ليبيا - شدات ببجي، فري فاير، روبلوكس، 
                 <br>وباقات نتفليكس وشاهد بأفضل الأسعار
             </p>
             
@@ -120,12 +118,12 @@
                     <p>موبي كاش، سداد</p>
                 </div>
                 <div class="payment-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="payment-icon"></div>
+                    <div class="payment-icon">💎</div>
                     <h3>USDT</h3>
                     <p>عملات رقمية</p>
                 </div>
                 <div class="payment-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="payment-icon"></div>
+                    <div class="payment-icon">💳</div>
                     <h3>بطاقات آيتونز</h3>
                     <p>دفع رقمي</p>
                 </div>
@@ -142,7 +140,7 @@
     <section class="products-section" id="products">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">المنتجات الأكثر مبيعاً</h2>
+                <h2 class="section-title">المنتجات والخدمات الأكثر مبيعاً</h2>
                 <a href="shop.html" class="view-all">عرض الكل →</a>
             </div>
 
@@ -159,7 +157,7 @@
     <!-- Features -->
     <section class="features-section" id="features">
         <div class="container">
-            <h2 class="section-title">لماذا تختار FLASH CARDS؟</h2>
+            <h2 class="section-title">لماذا تختار MD Store؟</h2>
             
             <div class="features-grid">
                 <div class="feature-card">
@@ -231,14 +229,12 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <div class="logo-icon">
-                            <span class="lightning">⚡</span>
-                        </div>
+                        <img src="images/logo.png" alt="MD Store Logo" style="height: 40px; width: auto; margin-left: 10px; border-radius: 8px;">
                         <div class="logo-text">
-                            <h1>FLASH CARDS</h1>
+                            <h1>MD Store</h1>
                         </div>
                     </div>
-                    <p>أفضل خدمات الشحن الرقمي في ليبيا</p>
+                    <p>أفضل خدمات الشحن الرقمي وخدمات SMM في ليبيا</p>
                 </div>
                 
                 <div class="footer-links">
@@ -260,24 +256,20 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 FLASH CARDS. جميع الحقوق محفوظة</p>
+                <p>&copy; 2026 MD Store. جميع الحقوق محفوظة</p>
             </div>
         </div>
     </footer>
 
-    <!-- Cart Overlay (MUST BE OUTSIDE SIDEBAR) -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-overlay" onclick="closeCart()"></div>
         <div class="cart-content">
             <div class="cart-header">
                 <h2>سلة المشتريات</h2>
                 <button class="close-cart" onclick="closeCart()">✕</button>
             </div>
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items loaded by JavaScript -->
-            </div>
+            <div class="cart-items" id="cartItems"></div>
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>الإجمالي:</span>
