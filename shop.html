@@ -48,9 +48,11 @@
         </div>
     </main>
 
-    <!-- Cart Sidebar (same as index.html) -->
+    <!-- Cart Overlay (MUST BE OUTSIDE SIDEBAR) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-overlay" onclick="closeCart()"></div>
         <div class="cart-content">
             <div class="cart-header">
                 <h2>سلة المشتريات</h2>
